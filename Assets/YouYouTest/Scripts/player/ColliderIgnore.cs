@@ -4,7 +4,7 @@ using UnityEngine;
 using com.cyborgAssets.inspectorButtonPro;
 using System;
 
-public class WeaponFather : MonoBehaviour
+public class ColliderIgnore : MonoBehaviour
 {
     public bool isIgnore = true;
     public Transform[] ignoreObjects;
