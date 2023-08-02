@@ -8,10 +8,10 @@ public class ColliderIgnore : MonoBehaviour
 {
     public bool isIgnore = true;
     public Transform[] ignoreObjects;
-    private List<Rigidbody> ignoreRigids;
+    //private List<Rigidbody> ignoreRigids;
     private List<Collider> ignoreColliders;
     public Transform[] ignoreSelfObjects;
-    private List<Rigidbody> ignoreSelfRigids;
+    //private List<Rigidbody> ignoreSelfRigids;
     private List<Collider> ignoreSelfColliders;
     //----------------------test----------------------
     public float numberofIgnoreRigids;
@@ -56,15 +56,15 @@ public class ColliderIgnore : MonoBehaviour
 
     public void SetIgnoreRigids()
     {
-        ignoreRigids = new List<Rigidbody>();
+        //ignoreRigids = new List<Rigidbody>();
         ignoreColliders = new List<Collider>();
         for (int i = 0; i < ignoreObjects.Length; i++)
         {
-            Rigidbody[] rigids = ignoreObjects[i].GetComponentsInChildren<Rigidbody>();
-            foreach (Rigidbody rigid in rigids)
-            {
-                ignoreRigids.Add(rigid);
-            }
+            // Rigidbody[] rigids = ignoreObjects[i].GetComponentsInChildren<Rigidbody>();
+            // foreach (Rigidbody rigid in rigids)
+            // {
+            //     ignoreRigids.Add(rigid);
+            // }
 
             Collider[] colliders = ignoreObjects[i].GetComponentsInChildren<Collider>();
             Debug.Log("colliders.Length:" + colliders.Length);
@@ -73,20 +73,20 @@ public class ColliderIgnore : MonoBehaviour
                 ignoreColliders.Add(collider);
             }
         }
-        numberofIgnoreRigids = ignoreRigids.Count;
+        //numberofIgnoreRigids = ignoreRigids.Count;
     }
 
     public void SetSelfIgnoreRigids()
     {
-        ignoreSelfRigids = new List<Rigidbody>();
+        //ignoreSelfRigids = new List<Rigidbody>();
         ignoreSelfColliders = new List<Collider>();
         for (int i = 0; i < ignoreSelfObjects.Length; i++)
         {
-            Rigidbody[] rigids = ignoreSelfObjects[i].GetComponentsInChildren<Rigidbody>();
-            foreach (Rigidbody rigid in rigids)
-            {
-                ignoreSelfRigids.Add(rigid);
-            }
+            // Rigidbody[] rigids = ignoreSelfObjects[i].GetComponentsInChildren<Rigidbody>();
+            // foreach (Rigidbody rigid in rigids)
+            // {
+            //     ignoreSelfRigids.Add(rigid);
+            // }
 
             Collider[] colliders = ignoreSelfObjects[i].GetComponentsInChildren<Collider>();
             foreach (Collider collider in colliders)
@@ -94,7 +94,7 @@ public class ColliderIgnore : MonoBehaviour
                 ignoreSelfColliders.Add(collider);
             }
         }
-        numberofIgnoreSelfRigids = ignoreSelfRigids.Count;
+        //numberofIgnoreSelfRigids = ignoreSelfRigids.Count;
     }
 
 
