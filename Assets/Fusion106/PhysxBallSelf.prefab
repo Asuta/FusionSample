@@ -1517,7 +1517,7 @@ GameObject:
   - component: {fileID: 3730844256791846200}
   - component: {fileID: 1981076783695986893}
   - component: {fileID: 3116522212043460541}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2224,7 +2224,7 @@ GameObject:
   - component: {fileID: 6576945473390012797}
   - component: {fileID: 7332771524945639913}
   - component: {fileID: 26691677359476487}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CenterOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2998,7 +2998,7 @@ GameObject:
   - component: {fileID: 3580660615166245821}
   - component: {fileID: 1668049547807065781}
   - component: {fileID: 7330880667553870073}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AnchorPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3106,6 +3106,7 @@ GameObject:
   - component: {fileID: 6981629710594605135}
   - component: {fileID: 4734134021899698045}
   - component: {fileID: 4356056592799078249}
+  - component: {fileID: 1541709113233478994}
   m_Layer: 0
   m_Name: RightFream
   m_TagString: Untagged
@@ -3361,6 +3362,18 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &1541709113233478994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840702667084775395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4b3cac7b266e745ad2b9cf3873478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1896814560121037453
 GameObject:
   m_ObjectHideFlags: 0
@@ -4184,7 +4197,7 @@ GameObject:
   - component: {fileID: 1223229474600316268}
   - component: {fileID: 2483503226101206822}
   - component: {fileID: 8659902384460044466}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CenterOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4394,7 +4407,7 @@ GameObject:
   - component: {fileID: 8682494262871427866}
   - component: {fileID: 7695439601745030903}
   - component: {fileID: 2872456179255530775}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AnchorPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5438,6 +5451,7 @@ GameObject:
   - component: {fileID: 3692628477836090117}
   - component: {fileID: 3112781087566304332}
   - component: {fileID: 4164509946911560904}
+  - component: {fileID: 3058574750433151946}
   m_Layer: 0
   m_Name: LeftFream
   m_TagString: Untagged
@@ -5693,6 +5707,18 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &3058574750433151946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3189164728527495234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4b3cac7b266e745ad2b9cf3873478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3221317961575928797
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,7 +5837,7 @@ GameObject:
   - component: {fileID: 7612551869511597395}
   - component: {fileID: 1303575936068857658}
   - component: {fileID: 2814124758506148213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponKu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5936,6 +5962,7 @@ GameObject:
   - component: {fileID: 4949691215928595134}
   - component: {fileID: 1455432816259805004}
   - component: {fileID: 4658461019606533349}
+  - component: {fileID: 3482263797649694265}
   m_Layer: 0
   m_Name: RightArm
   m_TagString: Untagged
@@ -6191,6 +6218,18 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &3482263797649694265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3327820516713289110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4b3cac7b266e745ad2b9cf3873478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3374339398151847224
 GameObject:
   m_ObjectHideFlags: 0
@@ -6374,6 +6413,7 @@ GameObject:
   - component: {fileID: 6038069654241260409}
   - component: {fileID: 6731468245639807557}
   - component: {fileID: 4784513374576175066}
+  - component: {fileID: 5509907029251419622}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -6527,6 +6567,18 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &5509907029251419622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3509636731845776503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4b3cac7b266e745ad2b9cf3873478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3515863925963383050
 GameObject:
   m_ObjectHideFlags: 0
@@ -7134,7 +7186,7 @@ GameObject:
   - component: {fileID: 589438650619847889}
   - component: {fileID: 7614844459210199285}
   - component: {fileID: 4296160783515078326}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7237,7 +7289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3212928393856501780}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8275,6 +8327,7 @@ GameObject:
   - component: {fileID: 6999764241485253839}
   - component: {fileID: 7683408841017277898}
   - component: {fileID: 7415407921072987832}
+  - component: {fileID: 205077298988347331}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -8532,6 +8585,18 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &205077298988347331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4637321000284418755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4b3cac7b266e745ad2b9cf3873478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4678882249714480490
 GameObject:
   m_ObjectHideFlags: 0
@@ -9036,7 +9101,7 @@ GameObject:
   - component: {fileID: 3755623214660693210}
   - component: {fileID: 4396515536228144962}
   - component: {fileID: 5317635031173345276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9322,7 +9387,7 @@ GameObject:
   - component: {fileID: 7627725026408512620}
   - component: {fileID: 8829138082553513685}
   - component: {fileID: 1902792980504926175}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9952,7 +10017,7 @@ GameObject:
   - component: {fileID: 7555325269536660221}
   - component: {fileID: 5307046258256420209}
   - component: {fileID: 1318569539293881476}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CenterOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10331,7 +10396,7 @@ GameObject:
   - component: {fileID: 2929969209764939614}
   - component: {fileID: 4543953967477649275}
   - component: {fileID: 1858849695769093219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CenterOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10893,6 +10958,7 @@ GameObject:
   - component: {fileID: 1744089286423475934}
   - component: {fileID: 4819364310324032679}
   - component: {fileID: 8322623185161369144}
+  - component: {fileID: 4209300325254208322}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -11160,6 +11226,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbee8b44b11247c49aab2476af9c5259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4209300325254208322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625335824688502311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4b3cac7b266e745ad2b9cf3873478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5701317471599219884
 GameObject:
   m_ObjectHideFlags: 0
@@ -11172,7 +11250,7 @@ GameObject:
   - component: {fileID: 4357963417833531572}
   - component: {fileID: 7452707823250466291}
   - component: {fileID: 2002224572306479014}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AnchorPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11544,6 +11622,17 @@ MonoBehaviour:
   - {fileID: 3911933815201319131}
   - {fileID: 1770746448526525126}
   - {fileID: 3212928393856501780}
+  maxHp: 100
+  nowHp: 100
+  canHurtBody:
+  - {fileID: 5509907029251419622}
+  - {fileID: 3482263797649694265}
+  - {fileID: 1541709113233478994}
+  - {fileID: 205077298988347331}
+  - {fileID: 4209300325254208322}
+  - {fileID: 5264086945945315770}
+  - {fileID: 3915363827314711467}
+  - {fileID: 3058574750433151946}
 --- !u!1 &5830317937892466381
 GameObject:
   m_ObjectHideFlags: 0
@@ -12906,6 +12995,7 @@ GameObject:
   - component: {fileID: 3980480515183593300}
   - component: {fileID: 8545592073932765913}
   - component: {fileID: 46642992102184492}
+  - component: {fileID: 5264086945945315770}
   m_Layer: 0
   m_Name: LeftArm
   m_TagString: Untagged
@@ -13161,6 +13251,18 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &5264086945945315770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514302876037323547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4b3cac7b266e745ad2b9cf3873478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6542106571295495348
 GameObject:
   m_ObjectHideFlags: 0
@@ -14581,7 +14683,7 @@ GameObject:
   - component: {fileID: 836314770578662587}
   - component: {fileID: 4505200920866041092}
   - component: {fileID: 7155288651213726960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14867,7 +14969,7 @@ GameObject:
   - component: {fileID: 8659662269804353447}
   - component: {fileID: 8156422496283220873}
   - component: {fileID: 3075934974257817554}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15459,7 +15561,7 @@ GameObject:
   - component: {fileID: 8160715503585813327}
   - component: {fileID: 4062482599000989282}
   - component: {fileID: 4545758758022286634}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16031,7 +16133,7 @@ GameObject:
   - component: {fileID: 8652829888882316768}
   - component: {fileID: 6179627162601723190}
   - component: {fileID: 2254518525291935547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bar (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17326,7 +17428,7 @@ GameObject:
   - component: {fileID: 7977415472235929968}
   - component: {fileID: 1723251471991503708}
   - component: {fileID: 2522063281399465536}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17466,6 +17568,7 @@ GameObject:
   - component: {fileID: 9186994874916667273}
   - component: {fileID: 8022316651057605636}
   - component: {fileID: 159926647197042368}
+  - component: {fileID: 3915363827314711467}
   m_Layer: 0
   m_Name: LeftHand
   m_TagString: Untagged
@@ -17723,6 +17826,18 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &3915363827314711467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8758692774931624598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b4b3cac7b266e745ad2b9cf3873478b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8759521765558170236
 GameObject:
   m_ObjectHideFlags: 0
@@ -18115,7 +18230,7 @@ GameObject:
   - component: {fileID: 8704014404920010394}
   - component: {fileID: 1252966158741035521}
   - component: {fileID: 1822655100729327021}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LineEnd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18199,7 +18314,7 @@ GameObject:
   - component: {fileID: 5429292947908639171}
   - component: {fileID: 2403917872941080337}
   - component: {fileID: 3117330282022969706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AnchorPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

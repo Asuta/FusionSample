@@ -2,6 +2,12 @@ using Fusion;
 using UnityEngine;
 using System;
 using Unity.Mathematics;
+using System.Collections.Generic;
+using UnityEngine.Events;
+
+
+
+public class CollisionHurtEvent : UnityEvent<float> { }
 
 namespace Fusion106
 {
@@ -41,6 +47,7 @@ namespace Fusion106
 
     public class PhysxBall : NetworkBehaviour
     {
+        
         [Networked]
         private TickTimer life { get; set; }
 
@@ -65,10 +72,25 @@ namespace Fusion106
         public Transform[] weaponList;
         private int nowWeapon;
 
+        [Header("Hp")]
+
+        public float maxHp = 100f;
+        public float nowHp = 100f;
+        public float minHurtValue = 10f;
+        public float hurtMultiplier = 10f;
+        public ColliderHurt[] canHurtBody;
+        
+        
+        
+
+
+
+
         //------------------------test------------------------
         // public Rigidbody[] cube1;
         // public Rigidbody cube2;
         // public float torqueCube = 100f;
+
 
         private void Awake()
         {
@@ -76,6 +98,20 @@ namespace Fusion106
             for (int i = 0; i < weaponList.Length; i++)
             {
                 weaponList[i].gameObject.SetActive(false);
+            }
+
+            //add listen of all the colliderHurt
+            for (int i = 0; i < canHurtBody.Length; i++)
+            {
+                canHurtBody[i].GetHurt.AddListener(OnHurt);
+            }
+        }
+
+        private void OnHurt(float collisitonValue)
+        {
+            if (collisitonValue > minHurtValue)
+            {
+                nowHp -= collisitonValue * hurtMultiplier;
             }
         }
 
@@ -87,36 +123,44 @@ namespace Fusion106
 
         private void Update()
         {
-            pillarsGroup.gameObject.SetActive(false);
 
+            //是否关闭参照物
+            pillarsGroup.gameObject.SetActive(false);
             if (!Object.HasInputAuthority)
             {
                 //deactive the XRGroup.
                 XRGroup.gameObject.SetActive(false);
                 return;
             }
-
-
             pillarsGroup.gameObject.SetActive(true);
 
-            //用右摇杆让XRgroup的Y轴旋转,并且是以rigidbody[0]为中心旋转
+
+            //旋转XRGroup
             var rightDirection = InputTest.Instance.inputActions.XRIRightHandInteraction.StickVector2.ReadValue<Vector2>();
-            //XRGroup.Rotate(0, rightDirection.x * 100f * Time.deltaTime, 0);
             XRGroup.RotateAround(rigidbodies[0].transform.position, Vector3.up, rightDirection.x * 100f * Time.deltaTime);
 
 
+            //重置
             if (InputTest.Instance.inputActions.XRILeftHandInteraction.ButtonY.WasPressedThisFrame() || Input.GetKeyDown(KeyCode.R))
             {
                 RPC_ResetBodyGroup();
             }
 
             //每按一次X，就激活下一个武器，同时把其他武器都deactive
-            if (InputTest.Instance.inputActions.XRILeftHandInteraction.ButtonX.WasPressedThisFrame()||Input.GetKeyDown(KeyCode.A))
+            if (InputTest.Instance.inputActions.XRILeftHandInteraction.ButtonX.WasPressedThisFrame() || Input.GetKeyDown(KeyCode.A))
             {
                 RPC_TakeOutWeapon();
             }
+
+            //Hp判断相关
+            HpUpdate();
+
         }
 
+        private void HpUpdate()
+        {
+
+        }
 
         [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
         private void RPC_ResetBodyGroup(RpcInfo info = default)
