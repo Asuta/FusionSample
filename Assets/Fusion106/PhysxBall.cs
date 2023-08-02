@@ -47,7 +47,7 @@ namespace Fusion106
 
     public class PhysxBall : NetworkBehaviour
     {
-        
+
         [Networked]
         private TickTimer life { get; set; }
 
@@ -79,9 +79,10 @@ namespace Fusion106
         public float minHurtValue = 10f;
         public float hurtMultiplier = 10f;
         public ColliderHurt[] canHurtBody;
-        
-        
-        
+        public ColliderHurt[] canHurtBody2;
+
+
+
 
 
 
@@ -105,6 +106,17 @@ namespace Fusion106
             {
                 canHurtBody[i].GetHurt.AddListener(OnHurt);
             }
+
+
+        }
+
+        /// <summary>
+        /// Start is called on the frame when a script is enabled just before
+        /// any of the Update methods is called the first time.
+        /// </summary>
+        void Start()
+        {
+
         }
 
         private void OnHurt(float collisitonValue)

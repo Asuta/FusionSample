@@ -6,8 +6,7 @@ using UnityEngine.Events;
 
 public class ColliderHurt : MonoBehaviour
 {
-    public CollisionHurtEvent GetHurt;
-
+    public CollisionHurtEvent GetHurt = new CollisionHurtEvent();
     // // Start is called before the first frame update
     // void Start()
     // {
