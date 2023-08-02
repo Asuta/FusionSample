@@ -7,7 +7,8 @@ using UnityEngine.Events;
 
 
 
-public class CollisionHurtEvent : UnityEvent<float> { }
+public class CollisionHurtEvent : UnityEvent<Vector3,float> { }
+
 
 namespace Fusion106
 {
@@ -53,6 +54,7 @@ namespace Fusion106
 
         private Rigidbody selfRb;
         public float jumpForce = 30f;
+        public float moveSpeed = 10f;
 
         public Transform targetT;
         public Transform[] targetTs;
@@ -80,10 +82,7 @@ namespace Fusion106
         public float minHurtValue = 10f;
         public float hurtMultiplier = 10f;
         public ColliderHurt[] canHurtBody;
-
-
-
-
+        public VFXHurtEvent vfxHurtEvent = new VFXHurtEvent();
 
 
 
@@ -108,7 +107,6 @@ namespace Fusion106
                 canHurtBody[i].GetHurt.AddListener(OnHurt);
             }
 
-
         }
 
         /// <summary>
@@ -120,13 +118,14 @@ namespace Fusion106
 
         }
 
-        private void OnHurt(float collisitonValue)
+        private void OnHurt(Vector3 haha,float collisitonValue)
         {
             if (collisitonValue > minHurtValue)
             {
                 nowHp -= collisitonValue * hurtMultiplier;
+                vfxHurtEvent.Invoke(haha,collisitonValue);
             }
-
+            
 
         }
 
@@ -319,13 +318,11 @@ namespace Fusion106
 
                 //使用unity输入的横轴和纵轴计算出一个方向向量，控制bodyGroup的前后左右移动
                 var leftDirection = headDirectionY * data.directionFromLeftStick;
-                bodyGroup.Translate(leftDirection * 0.1f);
+                bodyGroup.Translate(leftDirection * moveSpeed);
 
                 //用右摇杆让XRgroup移动（不用了）
                 // var rightDirection = data.directionFromRightStick;
                 // XRGroup.Translate(rightDirection * 0.1f);
-
-
 
 
                 if (data.bodyTorque != null)
