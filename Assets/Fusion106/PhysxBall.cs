@@ -74,12 +74,13 @@ namespace Fusion106
 
         [Header("Hp")]
 
+        public bool isDead = false;
         public float maxHp = 100f;
         public float nowHp = 100f;
         public float minHurtValue = 10f;
         public float hurtMultiplier = 10f;
         public ColliderHurt[] canHurtBody;
-        public ColliderHurt[] canHurtBody2;
+
 
 
 
@@ -125,6 +126,8 @@ namespace Fusion106
             {
                 nowHp -= collisitonValue * hurtMultiplier;
             }
+
+
         }
 
         public void Init(Vector3 forward)
@@ -172,11 +175,19 @@ namespace Fusion106
         private void HpUpdate()
         {
 
+            if (nowHp <= 0)
+            {
+                isDead = true;
+            }
         }
 
         [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
         private void RPC_ResetBodyGroup(RpcInfo info = default)
         {
+
+            nowHp = maxHp;
+            isDead = false;
+
             Vector3 distance = Vector3.zero - rigidbodies[0].transform.position;
             bodyGroup.position += distance;
             //take all the rigidbodies from the bodyGroup to null parent
@@ -299,7 +310,7 @@ namespace Fusion106
         public override void FixedUpdateNetwork()
         {
             // ---------------------------------test---------------------------------（对全身施力，从input获取数据）（但是会发抖。。。。。）（最简单算法）
-            if (GetInput(out NetworkInputData data))
+            if (GetInput(out NetworkInputData data) && !isDead)
             {
 
                 //get the Y axis of the head direction 

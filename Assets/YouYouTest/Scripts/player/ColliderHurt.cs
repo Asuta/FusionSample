@@ -29,7 +29,12 @@ public class ColliderHurt : MonoBehaviour
             Debug.LogError("碰撞力度" + mag);
             GetHurt.Invoke(mag);
         }
+        // float magg = other.impulse.magnitude;
+        // Debug.LogError("碰撞力度" + magg);
+        float magg = other.impulse.magnitude;
+        Debug.LogError("碰撞力度" + magg);
+        GetHurt.Invoke(magg);
 
-        
+
     }
 }

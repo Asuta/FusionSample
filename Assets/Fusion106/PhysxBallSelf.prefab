@@ -11221,7 +11221,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5625335824688502311}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbee8b44b11247c49aab2476af9c5259, type: 3}
   m_Name: 
@@ -11622,10 +11622,11 @@ MonoBehaviour:
   - {fileID: 3911933815201319131}
   - {fileID: 1770746448526525126}
   - {fileID: 3212928393856501780}
+  isDead: 0
   maxHp: 100
   nowHp: 100
   minHurtValue: 10
-  hurtMultiplier: 10
+  hurtMultiplier: 1
   canHurtBody:
   - {fileID: 5509907029251419622}
   - {fileID: 3482263797649694265}
@@ -11635,7 +11636,6 @@ MonoBehaviour:
   - {fileID: 5264086945945315770}
   - {fileID: 3915363827314711467}
   - {fileID: 3058574750433151946}
-  canHurtBody2: []
 --- !u!1 &5830317937892466381
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,15 +18,15 @@ public class CollisionTestLog : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision other) {
-        Debug.Log("Collision Enter"+other.gameObject.name);
-    }
-    private void OnCollisionStay(Collision other) {
-        Debug.Log("Collision Stay"+other.gameObject.name);
+    // private void OnCollisionEnter(Collision other) {
+    //     Debug.Log("Collision Enter"+other.gameObject.name);
+    // }
+    // private void OnCollisionStay(Collision other) {
+    //     Debug.Log("Collision Stay"+other.gameObject.name);
         
-    }
-    private void OnCollisionExit(Collision other) {
-        Debug.Log("Collision Exit"+other.gameObject.name);
+    // }
+    // private void OnCollisionExit(Collision other) {
+    //     Debug.Log("Collision Exit"+other.gameObject.name);
         
-    }
+    // }
 }
