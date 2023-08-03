@@ -72,7 +72,8 @@ namespace Fusion106
         public float maxRotationChange = 0.2f;
         //define a list of transform
         public Transform[] weaponList;
-        private int nowWeapon;
+        [Networked]
+        private int nowWeapon { get; set; } = 0;
 
         [Header("HP")]
         [Space(10)]
