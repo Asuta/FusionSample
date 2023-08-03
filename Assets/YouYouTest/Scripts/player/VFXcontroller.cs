@@ -24,7 +24,7 @@ public class VFXcontroller : MonoBehaviour
         //播放粒子特效
         bloodParticle.transform.position = arg0;
         bloodParticle.Play();
-        Debug.LogError("冒血了" + arg1);
+        //Debug.LogError("冒血了" + arg1);
     }
 
     // Start is called before the first frame update
