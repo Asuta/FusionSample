@@ -74,8 +74,8 @@ namespace Fusion106
         public Transform[] weaponList;
         private int nowWeapon;
 
-        [Header("Hp")]
-
+        [Header("HP")]
+        [Space(10)]
         public bool isDead = false;
         public float maxHp = 100f;
         public float nowHp = 100f;
@@ -86,11 +86,13 @@ namespace Fusion106
 
 
 
-
         //------------------------test------------------------
-        // public Rigidbody[] cube1;
-        // public Rigidbody cube2;
-        // public float torqueCube = 100f;
+        [Header("TEST")]
+        [Space(10)]
+        public float testFloat2 = 0f;
+        [Networked]
+        public Vector3 bodyTorque { get; set; }
+
 
 
         private void Awake()
