@@ -5933,9 +5933,10 @@ MonoBehaviour:
   - {fileID: 6196476512474770684}
   - {fileID: 8659766493447191541}
   - {fileID: 833021452540177227}
-  isDead: 0
+  lwejoifjoijgoiwejf: 100
+  _isDead: 0
   maxHp: 30
-  nowHp: 30
+  _nowHp: 0
   minHurtValue: 2
   hurtMultiplier: 1
   canHurtBody:
@@ -5947,6 +5948,8 @@ MonoBehaviour:
   - {fileID: 431374286147710376}
   - {fileID: 7869920513364511537}
   - {fileID: 2091221927491834971}
+  testFloat2: 0
+  _bodyTorque: {x: 0, y: 0, z: 0}
 --- !u!1 &2185260226517266658
 GameObject:
   m_ObjectHideFlags: 0

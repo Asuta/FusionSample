@@ -76,9 +76,12 @@ namespace Fusion106
 
         [Header("HP")]
         [Space(10)]
-        public bool isDead = false;
+        public float lwejoifjoijgoiwejf = 100f;
+        [Networked]
+        public bool isDead { get; set; }
         public float maxHp = 100f;
-        public float nowHp = 100f;
+        [Networked]
+        public float nowHp { get; set; }
         public float minHurtValue = 10f;
         public float hurtMultiplier = 10f;
         public ColliderHurt[] canHurtBody;
@@ -109,6 +112,8 @@ namespace Fusion106
                 canHurtBody[i].GetHurt.AddListener(OnHurt);
             }
 
+            
+
         }
 
         /// <summary>
@@ -117,7 +122,7 @@ namespace Fusion106
         /// </summary>
         void Start()
         {
-
+            nowHp = maxHp;
         }
 
         private void OnHurt(Vector3 haha,float collisitonValue)
