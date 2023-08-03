@@ -142,7 +142,7 @@ namespace Fusion106
 
         public void Init(Vector3 forward)
         {
-
+            RPC_TakeOutWeapon();
         }
 
 
