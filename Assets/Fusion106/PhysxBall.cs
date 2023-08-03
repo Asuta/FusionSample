@@ -225,7 +225,7 @@ namespace Fusion106
         private void RPC_TakeOutWeapon(RpcInfo info = default)
         {
             //每按一次X，就激活下一个武器，同时把其他武器都deactive
-            weaponList[nowWeapon].gameObject.SetActive(false);
+            //weaponList[nowWeapon].gameObject.SetActive(false);
             nowWeapon++;
             if (nowWeapon >= weaponList.Length)
             {
@@ -236,6 +236,15 @@ namespace Fusion106
 
         private static void OnWeaponChanged(Changed<PhysxBall> changed)
         {
+            // set all weapon list deactive
+            for (int i = 0; i < changed.Behaviour.weaponList.Length; i++)
+            {
+                if (i != changed.Behaviour.nowWeapon)
+                {
+                    changed.Behaviour.weaponList[i].gameObject.SetActive(false);
+                }
+            }
+
             changed.Behaviour.weaponList[changed.Behaviour.nowWeapon].gameObject.SetActive(true);
         }
 
