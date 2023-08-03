@@ -177,8 +177,6 @@ namespace Fusion106
                 RPC_TakeOutWeapon();
             }
 
-            //Hp判断相关
-            HpUpdate();
 
         }
 
@@ -333,10 +331,12 @@ namespace Fusion106
 
         public override void FixedUpdateNetwork()
         {
+            //Hp判断相关
+            HpUpdate();
             // ---------------------------------test---------------------------------（对全身施力，从input获取数据）（但是会发抖。。。。。）（最简单算法）
             if (GetInput(out NetworkInputData data) && !isDead)
             {
-
+                Debug.LogError("GetInput");
                 //get the Y axis of the head direction 
                 //Quaternion headDirectionY = Quaternion.Euler(0, headDirection.rotation.eulerAngles.y, 0);
                 Quaternion headDirectionY = Quaternion.Euler(0, data.headDirection.y, 0);
