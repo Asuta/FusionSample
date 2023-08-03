@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 
 
-public class CollisionHurtEvent : UnityEvent<Vector3,float> { }
+public class CollisionHurtEvent : UnityEvent<Vector3, float> { }
 
 
 namespace Fusion106
@@ -70,13 +70,18 @@ namespace Fusion106
         public float torque = 100f;
         public float slowDownAngularVelocity = 0.9f;
         public float maxRotationChange = 0.2f;
-        //define a list of transform
+
+        [Header("WEAPON")]
+        [Space(10)]
+
         public Transform[] weaponList;
-        [Networked]
+        [Networked(OnChanged = nameof(OnWeaponChanged))]
         private int nowWeapon { get; set; } = 0;
+
 
         [Header("HP")]
         [Space(10)]
+
         public float lwejoifjoijgoiwejf = 100f;
         [Networked]
         public bool isDead { get; set; }
@@ -112,9 +117,6 @@ namespace Fusion106
             {
                 canHurtBody[i].GetHurt.AddListener(OnHurt);
             }
-
-            
-
         }
 
         /// <summary>
@@ -124,16 +126,17 @@ namespace Fusion106
         void Start()
         {
             nowHp = maxHp;
+            RPC_TakeOutWeapon();
         }
 
-        private void OnHurt(Vector3 haha,float collisitonValue)
+        private void OnHurt(Vector3 haha, float collisitonValue)
         {
             if (collisitonValue > minHurtValue)
             {
                 nowHp -= collisitonValue * hurtMultiplier;
-                vfxHurtEvent.Invoke(haha,collisitonValue);
+                vfxHurtEvent.Invoke(haha, collisitonValue);
             }
-            
+
 
         }
 
@@ -228,7 +231,12 @@ namespace Fusion106
             {
                 nowWeapon = 0;
             }
-            weaponList[nowWeapon].gameObject.SetActive(true);
+            //weaponList[nowWeapon].gameObject.SetActive(true);
+        }
+
+        private static void OnWeaponChanged(Changed<PhysxBall> changed)
+        {
+            changed.Behaviour.weaponList[changed.Behaviour.nowWeapon].gameObject.SetActive(true);
         }
 
 
