@@ -242,6 +242,7 @@ namespace Fusion106
                     changed.Behaviour.weaponList[i].gameObject.SetActive(false);
                 }
             }
+            Debug.LogError("changed.Behaviour.nowWeapon: " + changed.Behaviour.nowWeapon);
 
             changed.Behaviour.weaponList[changed.Behaviour.nowWeapon].gameObject.SetActive(true);
         }
