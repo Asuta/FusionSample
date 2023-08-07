@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class WeaponKuMove : MonoBehaviour
+public class WeaponKuMove : NetworkBehaviour
 {
     public Transform bodyT;
     public Vector3 offset;
     private Transform thisT;
+    [Header("isLog?")]
+    public bool isLog;
 
     private void Awake()
     {
@@ -34,8 +37,13 @@ public class WeaponKuMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public override void FixedUpdateNetwork()
     {
         thisT.position = bodyT.position + offset;
+        if (isLog)
+        {
+            Debug.LogError("thisT.position = " + thisT.position);
+        }
+        
     }
 }

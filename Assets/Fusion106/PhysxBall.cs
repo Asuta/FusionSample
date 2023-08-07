@@ -213,9 +213,17 @@ namespace Fusion106
         [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
         private void RPC_ResetBodyGroup(RpcInfo info = default)
         {
-
+            if(!Object.HasStateAuthority)
+            {
+                return;
+            }
             nowHp = maxHp;
             isDead = false;
+            //set all weapon to false
+            // for (int i = 0; i < weaponList.Length; i++)
+            // {
+            //     weaponList[i].gameObject.SetActive(false);
+            // }
 
             Vector3 distance = Vector3.zero - rigidbodies[0].transform.position;
             bodyGroup.position += distance;
