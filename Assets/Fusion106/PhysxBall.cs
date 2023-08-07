@@ -126,7 +126,7 @@ namespace Fusion106
         void Start()
         {
             nowHp = maxHp;
-            RPC_TakeOutWeapon();
+            //RPC_TakeOutWeapon();
         }
 
         private void OnHurt(Vector3 haha, float collisitonValue)
@@ -142,9 +142,30 @@ namespace Fusion106
 
         public void Init(Vector3 forward)
         {
-            RPC_TakeOutWeapon();
+            //RPC_TakeOutWeapon();
+
         }
 
+        public override void Spawned()
+        {
+            //初始化武器状态
+            SetWeaponState();
+        }
+
+        private void SetWeaponState()
+        {
+            for (int i = 0; i < weaponList.Length; i++)
+            {
+                if (i != nowWeapon)
+                {
+                    weaponList[i].gameObject.SetActive(false);
+                }
+            }
+
+            //Debug.LogError("changed.Behaviour.nowWeapon: " + nowWeapon);
+
+            weaponList[nowWeapon].gameObject.SetActive(true);
+        }
 
         private void Update()
         {
@@ -222,8 +243,11 @@ namespace Fusion106
         [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
         private void RPC_TakeOutWeapon(RpcInfo info = default)
         {
+            if (Object.HasStateAuthority == false)
+            {
+                return;
+            }
             //每按一次X，就激活下一个武器，同时把其他武器都deactive
-            //weaponList[nowWeapon].gameObject.SetActive(false);
             nowWeapon++;
             if (nowWeapon >= weaponList.Length)
             {
@@ -234,7 +258,7 @@ namespace Fusion106
 
         private static void OnWeaponChanged(Changed<PhysxBall> changed)
         {
-            // set all weapon list deactive
+            //set all weapon list deactive
             for (int i = 0; i < changed.Behaviour.weaponList.Length; i++)
             {
                 if (i != changed.Behaviour.nowWeapon)
@@ -242,10 +266,29 @@ namespace Fusion106
                     changed.Behaviour.weaponList[i].gameObject.SetActive(false);
                 }
             }
+
             Debug.LogError("changed.Behaviour.nowWeapon: " + changed.Behaviour.nowWeapon);
 
             changed.Behaviour.weaponList[changed.Behaviour.nowWeapon].gameObject.SetActive(true);
+            //set the weapon
+            //SetWeapon(changed.Behaviour.nowWeapon);
         }
+
+        // private static void SetWeapon(int weapon)
+        // {
+        //     // set all weapon list deactive
+        //     for (int i = 0; i < .weaponList.Length; i++)
+        //     {
+        //         if (i != weapon)
+        //         {
+        //             MyStaticClass.weaponList[i].gameObject.SetActive(false);
+        //         }
+        //     }
+
+        //     MyStaticClass.weaponList[weapon].gameObject.SetActive(true);
+        // }
+
+
 
 
         private void FixedUpdate()
@@ -337,7 +380,7 @@ namespace Fusion106
             // ---------------------------------test---------------------------------（对全身施力，从input获取数据）（但是会发抖。。。。。）（最简单算法）
             if (GetInput(out NetworkInputData data) && !isDead)
             {
-                Debug.LogError("GetInput");
+                //Debug.LogError("GetInput");
                 //get the Y axis of the head direction 
                 //Quaternion headDirectionY = Quaternion.Euler(0, headDirection.rotation.eulerAngles.y, 0);
                 Quaternion headDirectionY = Quaternion.Euler(0, data.headDirection.y, 0);
