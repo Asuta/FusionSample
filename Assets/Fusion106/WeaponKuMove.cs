@@ -41,7 +41,7 @@ public class WeaponKuMove : NetworkBehaviour
     private void Update()
     {
         thisT.position = bodyT.position + offset;
-        Debug.LogError("thisT.position = ooooooooooooooooooo");
+        
     }
 
     // Update is called once per frame

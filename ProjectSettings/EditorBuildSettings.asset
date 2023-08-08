@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Samples/XR Interaction Toolkit/2.3.2/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
+  - enabled: 1
+    path: "Assets/Fusion106/Scene106\uFF08testTorque\uFF09.unity"
+    guid: 87ec71537fb7cdf4fa4d63a25eb3a07c
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b50c6ae2b662b424e9929cf01af1fe28, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 226d6ea48f4e0584ea6dfc25f011138b, type: 2}
