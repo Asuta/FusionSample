@@ -13,12 +13,12 @@ public class WeaponKuMove : NetworkBehaviour
 
     private void Awake()
     {
-        
+
         thisT = GetComponent<Transform>();
         //foreach all of chilldern to deactive
         for (int i = 0; i < thisT.childCount; i++)
         {
-            
+
             thisT.GetChild(i).gameObject.SetActive(false);
 
         }
@@ -34,16 +34,24 @@ public class WeaponKuMove : NetworkBehaviour
 
         }
 
+
+
+    }
+
+    private void Update()
+    {
+        thisT.position = bodyT.position + offset;
+        Debug.LogError("thisT.position = ooooooooooooooooooo");
     }
 
     // Update is called once per frame
     public override void FixedUpdateNetwork()
     {
         thisT.position = bodyT.position + offset;
-        if (isLog)
-        {
-            Debug.LogError("thisT.position = " + thisT.position);
-        }
-        
+        // if (isLog)
+        // {
+        //     Debug.LogError("thisT.position = " + thisT.position);
+        // }
+
     }
 }
