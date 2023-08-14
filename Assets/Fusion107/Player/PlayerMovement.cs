@@ -17,6 +17,10 @@ namespace Fusion107
         private Vector3 velocity;
         private bool _jumpPressed;
 
+        [Header("body movement")]
+        public Rigidbody body;
+        public float bodySpeed = 2f;
+
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
@@ -39,40 +43,47 @@ namespace Fusion107
         public override void FixedUpdateNetwork()
         {
 
-            velocity.y += GravityValue * Runner.DeltaTime;
-            if (_jumpPressed && _controller.isGrounded)
-            {
-                velocity.y += JumpForce;
-                // Debug.LogError("Jump");
-            }
-            _jumpPressed = false;
-            // Only move own player and not every other player. Each player controls its own player object.
-            if (HasStateAuthority == false)
-            {
-                return;
-            }
+            // velocity.y += GravityValue * Runner.DeltaTime;
+            // if (_jumpPressed && _controller.isGrounded)
+            // {
+            //     velocity.y += JumpForce;
+            //     // Debug.LogError("Jump");
+            // }
+            // _jumpPressed = false;
+            // // Only move own player and not every other player. Each player controls its own player object.
+            // if (HasStateAuthority == false)
+            // {
+            //     return;
+            // }
+
+            // Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * PlayerSpeed;
 
 
+            // if (move != Vector3.zero)
+            // {
+            //     gameObject.transform.forward = move;
+            // }
+
+            // _controller.Move(move + velocity * Runner.DeltaTime);
+
+            // if (_controller.isGrounded)
+            // {
+            //     velocity = new Vector3(0, -1, 0);
+            // }
 
 
-
-            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * PlayerSpeed;
-
-
+            //用wasd控制body的velocity
+            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * bodySpeed;
             if (move != Vector3.zero)
             {
-                gameObject.transform.forward = move;
+                body.velocity = move;
             }
-
-
-
-
-            _controller.Move(move + velocity * Runner.DeltaTime);
-
-            if (_controller.isGrounded)
+            else
             {
-                velocity = new Vector3(0, -1, 0);
+                body.velocity = Vector3.zero;
             }
+ 
+            
 
         }
     }

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Fusion106;
 using com.cyborgAssets.inspectorButtonPro;
+using Fusion;
 
-public class NewBehaviourScript : MonoBehaviour
+public class NewBehaviourScript : NetworkBehaviour
 {
     //public PhysxBall  targetScripts;
     public Transform[] targetTs;
@@ -30,9 +31,15 @@ public class NewBehaviourScript : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
+
+    }
+
+
+    public override void FixedUpdateNetwork()
+    {
         for (int i = 0; i < rigidbodies.Length; i++)
         {
-            
+
             Quaternion difference = targetTs[i].rotation * Quaternion.Inverse(rigidbodies[i].rotation);
             difference.ToAngleAxis(out float angle, out Vector3 axis);
 
@@ -48,7 +55,6 @@ public class NewBehaviourScript : MonoBehaviour
             rigidbodies[i].angularVelocity = Vector3.MoveTowards(rigidbodies[i].angularVelocity, targetAngleVelocity, maxChange);
         }
     }
-
 
 
 
