@@ -31,7 +31,7 @@ namespace Fusion107
         {
             if (Input.GetButtonDown("Jump"))
             {
-                Debug.LogError("Jump pressed");
+                // Debug.LogError("Jump pressed");
                 _jumpPressed = true;
             }
         }
@@ -43,7 +43,7 @@ namespace Fusion107
             if (_jumpPressed && _controller.isGrounded)
             {
                 velocity.y += JumpForce;
-                Debug.LogError("Jump");
+                // Debug.LogError("Jump");
             }
             _jumpPressed = false;
             // Only move own player and not every other player. Each player controls its own player object.
