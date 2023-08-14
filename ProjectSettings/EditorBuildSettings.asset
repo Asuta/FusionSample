@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Fusion107/ShareMode.unity
+    guid: 934c630dba56f574bade19f7002f770e
   - enabled: 0
     path: Assets/Fusion101.unity
     guid: ea6ced8bfa7f84b5cb45e3352a7abe54

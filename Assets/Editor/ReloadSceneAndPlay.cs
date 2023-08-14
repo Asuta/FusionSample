@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RefreshResources : Editor
 {
-    [MenuItem("Custom/Refresh Resources %p")]
+    [MenuItem("Custom/Refresh Resources %;")]
     private static void Refresh()
     {
         // 刷新资源
