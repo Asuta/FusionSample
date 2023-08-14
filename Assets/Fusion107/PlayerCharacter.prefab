@@ -7459,7 +7459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordOffset: 0
   WordCount: 0
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   InterpolationSpace: 0
   InterpolationTarget: {fileID: 2155910889822441306}
   InterpolateErrorCorrection: 1
@@ -12271,7 +12271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordOffset: 0
   WordCount: 0
-  _interpolationDataSource: 0
+  _interpolationDataSource: 3
   InterpolationSpace: 0
   InterpolationTarget: {fileID: 0}
   InterpolateErrorCorrection: 1
@@ -13964,7 +13964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WordOffset: 0
   WordCount: 0
-  _interpolationDataSource: 1
+  _interpolationDataSource: 3
   InterpolationSpace: 0
   InterpolationTarget: {fileID: 0}
   InterpolateErrorCorrection: 1
