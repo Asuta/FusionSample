@@ -7494,7 +7494,7 @@ MonoBehaviour:
   JumpForce: 5
   GravityValue: -9.81
   body: {fileID: 2593488555751240890}
-  bodySpeed: 100
+  bodySpeed: 300
 --- !u!114 &8806593921310676997
 MonoBehaviour:
   m_ObjectHideFlags: 0
