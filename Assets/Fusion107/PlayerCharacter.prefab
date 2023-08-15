@@ -6671,13 +6671,14 @@ GameObject:
   - component: {fileID: 1587243391583544517}
   - component: {fileID: 3396780955064608073}
   - component: {fileID: 3527074244983046081}
+  - component: {fileID: 4446688916783719361}
   m_Layer: 0
   m_Name: NetBody (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4880899173205375487
 Transform:
   m_ObjectHideFlags: 0
@@ -6773,7 +6774,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3232230736855751178}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71659033bbb8b4e4dafb1f1ac66c4f65, type: 3}
   m_Name: 
@@ -6812,6 +6813,19 @@ MonoBehaviour:
     RotTeleportRadians: 1.5
   UseLegacySharedModeInterpolation: 0
   TargetInterpolationDelay: 0.03
+--- !u!114 &4446688916783719361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232230736855751178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf9fd6d1fb12be64cb20f7038d227d1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 4920941132057544546}
 --- !u!1 &3441545987494068570
 GameObject:
   m_ObjectHideFlags: 0
