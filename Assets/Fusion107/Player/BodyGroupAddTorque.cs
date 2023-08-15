@@ -40,14 +40,14 @@ public class NewBehaviourScript : NetworkBehaviour
         for (int i = 0; i < rigidbodies.Length; i++)
         {
             
-            //当i=0时（对于body刚体），如果没有权限，就跳过
-            if (i == 0)
-            {
-                if(HasStateAuthority == false)
-                {
-                    continue;
-                }
-            }
+            // //当i=0时（对于body刚体），如果没有权限，就跳过
+            // if (i == 0)
+            // {
+            //     if(HasStateAuthority == false)
+            //     {
+            //         continue;
+            //     }
+            // }
 
 
             Quaternion difference = targetTs[i].rotation * Quaternion.Inverse(rigidbodies[i].rotation);
