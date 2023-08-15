@@ -6783,6 +6783,7 @@ MonoBehaviour:
   WordCount: 0
   _interpolationDataSource: 0
   target: {fileID: 4920941132057544546}
+  confiJoint: {fileID: 0}
 --- !u!114 &3527074244983046081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14448,9 +14449,9 @@ ConfigurableJoint:
   m_GameObject: {fileID: 7697581006953552751}
   m_ConnectedBody: {fileID: 4379835182232612086}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0.5, z: 0}
+  m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
@@ -15310,6 +15311,7 @@ MonoBehaviour:
   WordCount: 0
   _interpolationDataSource: 0
   target: {fileID: 86012127693458085}
+  confiJoint: {fileID: 937612095250347176}
 --- !u!114 &4165264815384993980
 MonoBehaviour:
   m_ObjectHideFlags: 0
