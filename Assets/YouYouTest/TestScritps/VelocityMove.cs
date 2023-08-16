@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fusion;
 
-public class VelocityMove : MonoBehaviour
+public class VelocityMove : NetworkBehaviour
 {
     public Transform moveTarget;
     public float velocityNum;
@@ -38,7 +39,11 @@ public class VelocityMove : MonoBehaviour
     private void FixedUpdate()
     {
         //thisRb.velocity = (moveTarget.position - transform.position).normalized * velocityNum;
-        PIDMovement();
+        if (HasStateAuthority == false)
+        {
+            PIDMovement();
+        }
+
     }
 
     void PIDMovement()
@@ -49,8 +54,8 @@ public class VelocityMove : MonoBehaviour
         float g = 1 / (1 + kd * Time.fixedDeltaTime + kp * Time.fixedDeltaTime * Time.fixedDeltaTime);
         float ksg = kp * g;
         float kdg = (kd + kp * Time.fixedDeltaTime) * g;
-        Vector3 force = (target.position - transform.position) * ksg + ( - _rigidbody.velocity) * kdg;;
+        Vector3 force = (target.position - transform.position) * ksg + (-_rigidbody.velocity) * kdg; ;
         _rigidbody.AddForce(force, ForceMode.Acceleration);
-        Debug.LogError("PID)))"+force);
+        Debug.LogError("PID)))" + force);
     }
 }
