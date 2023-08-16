@@ -72,18 +72,23 @@ namespace Fusion107
             // }
 
 
-            //用wasd控制body的velocity
-            Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * bodySpeed;
-            if (move != Vector3.zero)
+
+            if (HasStateAuthority)
             {
-                body.velocity = move;
+                //用wasd控制body的velocity
+                Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * bodySpeed;
+                if (move != Vector3.zero)
+                {
+                    body.velocity = move;
+                }
+                else
+                {
+                    body.velocity = Vector3.zero;
+                }
             }
-            else
-            {
-                body.velocity = Vector3.zero;
-            }
- 
-            
+
+
+
 
         }
     }

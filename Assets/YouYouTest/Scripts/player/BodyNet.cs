@@ -10,6 +10,8 @@ public class BodyNet : NetworkBehaviour
     private Transform selfT;
     public ConfigurableJoint confiJoint;
 
+    public NetworkTransform haha;
+
     // [Header("PID")]
     // [SerializeField] float frequency = 50f;
     // [SerializeField] float damping = 1f;
@@ -32,6 +34,8 @@ public class BodyNet : NetworkBehaviour
         //     confiJoint.yMotion = ConfigurableJointMotion.Locked;
         //     confiJoint.zMotion = ConfigurableJointMotion.Locked;
         // }
+
+        transform.position = haha.ReadPosition();
 
     }
 
