@@ -186,7 +186,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 4
+  m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -843,6 +843,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e560ecc592c1b2a48af3543bd6d9ef8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WordOffset: 0
+  WordCount: 0
+  _interpolationDataSource: 0
   moveTarget: {fileID: 1928988110}
   velocityNum: 1
   frequency: 50

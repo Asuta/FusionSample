@@ -6784,7 +6784,6 @@ MonoBehaviour:
   _interpolationDataSource: 0
   target: {fileID: 4920941132057544546}
   confiJoint: {fileID: 0}
-  haha: {fileID: 0}
 --- !u!114 &3527074244983046081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7881,6 +7880,30 @@ MonoBehaviour:
   body: {fileID: 2593488555751240890}
   bodySpeed: 300
   XRrig: {fileID: 5291765242749948141}
+  leftStick:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Stick
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d777377c-b6e2-4e6a-828e-46d3418f416b
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -7052663696599272515, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightStick:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Stick
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 6c11e022-e60b-41bd-a8bd-3ab866f1fad1
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 8129960120530506349, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &8806593921310676997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15340,7 +15363,6 @@ MonoBehaviour:
   _interpolationDataSource: 0
   target: {fileID: 86012127693458085}
   confiJoint: {fileID: 937612095250347176}
-  haha: {fileID: 0}
 --- !u!114 &4165264815384993980
 MonoBehaviour:
   m_ObjectHideFlags: 0

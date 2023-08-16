@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 namespace Fusion107
 {
@@ -23,6 +25,8 @@ namespace Fusion107
 
         [Header("XR rig")]
         public GameObject XRrig;
+        public InputActionProperty leftStick;
+        public InputActionProperty rightStick;
 
         private void Awake()
         {
@@ -48,6 +52,9 @@ namespace Fusion107
                 // Debug.LogError("Jump pressed");
                 _jumpPressed = true;
             }
+
+            Debug.LogError("leftStick: " + leftStick.action.ReadValue<Vector2>());
+            Debug.LogError("rightStick: " + rightStick.action.ReadValue<Vector2>());
         }
 
         public override void FixedUpdateNetwork()
@@ -86,7 +93,8 @@ namespace Fusion107
             if (HasStateAuthority)
             {
                 //用wasd控制body的velocity
-                Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * bodySpeed;
+                //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * bodySpeed;
+                Vector3 move = new Vector3(leftStick.action.ReadValue<Vector2>().x, 0, leftStick.action.ReadValue<Vector2>().y) * Runner.DeltaTime * bodySpeed;
                 if (move != Vector3.zero)
                 {
                     body.velocity = move;
@@ -95,6 +103,18 @@ namespace Fusion107
                 {
                     body.velocity = Vector3.zero;
                 }
+
+                Vector3 move2 = new Vector3(rightStick.action.ReadValue<Vector2>().x, 0, rightStick.action.ReadValue<Vector2>().y) * Runner.DeltaTime * bodySpeed;
+                if (move2 != Vector3.zero)
+                {
+                    XRrig.transform.position += move2*0.05f;
+                }
+                else
+                {
+                    XRrig.transform.position += Vector3.zero;
+                }
+
+
             }
 
 
