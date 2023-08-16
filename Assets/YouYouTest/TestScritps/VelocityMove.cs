@@ -15,7 +15,7 @@ public class VelocityMove : MonoBehaviour
     [SerializeField] float damping = 1f;
     [SerializeField] float rotfrequency = 100f;
     [SerializeField] float rotDamping = 0.9f;
-    [SerializeField] Rigidbody playerRigidbody;
+    // [SerializeField] Rigidbody playerRigidbody;
     [SerializeField] Transform target;
     [Space]
     [Header("Springs")]
@@ -27,7 +27,7 @@ public class VelocityMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        thisRb = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class VelocityMove : MonoBehaviour
         float g = 1 / (1 + kd * Time.fixedDeltaTime + kp * Time.fixedDeltaTime * Time.fixedDeltaTime);
         float ksg = kp * g;
         float kdg = (kd + kp * Time.fixedDeltaTime) * g;
-        Vector3 force = (target.position - transform.position) * ksg + (playerRigidbody.velocity - _rigidbody.velocity) * kdg;
+        Vector3 force = (target.position - transform.position) * ksg + ( - _rigidbody.velocity) * kdg;;
         _rigidbody.AddForce(force, ForceMode.Acceleration);
         Debug.LogError("PID)))"+force);
     }

@@ -6784,6 +6784,11 @@ MonoBehaviour:
   _interpolationDataSource: 0
   target: {fileID: 4920941132057544546}
   confiJoint: {fileID: 0}
+  frequency: 50
+  damping: 1
+  rotfrequency: 100
+  rotDamping: 0.9
+  _rigidbody: {fileID: 0}
 --- !u!114 &3527074244983046081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15312,6 +15317,11 @@ MonoBehaviour:
   _interpolationDataSource: 0
   target: {fileID: 86012127693458085}
   confiJoint: {fileID: 937612095250347176}
+  frequency: 50
+  damping: 1
+  rotfrequency: 100
+  rotDamping: 0.9
+  _rigidbody: {fileID: 4379835182232612086}
 --- !u!114 &4165264815384993980
 MonoBehaviour:
   m_ObjectHideFlags: 0
