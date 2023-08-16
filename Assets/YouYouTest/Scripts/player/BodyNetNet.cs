@@ -15,7 +15,13 @@ public class BodyNetNet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        thisT.position = target.position;
-        thisT.rotation = target.rotation;        
+
     }
+
+    private void LateUpdate()
+    {
+        thisT.position = target.position;
+        thisT.rotation = target.rotation;
+    }
+
 }
