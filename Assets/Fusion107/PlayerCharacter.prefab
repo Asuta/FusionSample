@@ -6784,6 +6784,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   target: {fileID: 4920941132057544546}
   confiJoint: {fileID: 0}
+  haha: {fileID: 0}
 --- !u!114 &3527074244983046081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7879,6 +7880,7 @@ MonoBehaviour:
   GravityValue: -9.81
   body: {fileID: 2593488555751240890}
   bodySpeed: 300
+  XRrig: {fileID: 5291765242749948141}
 --- !u!114 &8806593921310676997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15338,6 +15340,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   target: {fileID: 86012127693458085}
   confiJoint: {fileID: 937612095250347176}
+  haha: {fileID: 0}
 --- !u!114 &4165264815384993980
 MonoBehaviour:
   m_ObjectHideFlags: 0
