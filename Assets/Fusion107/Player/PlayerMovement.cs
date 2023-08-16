@@ -21,9 +21,19 @@ namespace Fusion107
         public Rigidbody body;
         public float bodySpeed = 2f;
 
+        [Header("XR rig")]
+        public GameObject XRrig;
+
         private void Awake()
         {
             _controller = GetComponent<CharacterController>();
+        }
+
+        public override void Spawned()
+        {
+            Debug.LogError("Spawned");
+            XRrig.SetActive(HasStateAuthority);
+
         }
 
 

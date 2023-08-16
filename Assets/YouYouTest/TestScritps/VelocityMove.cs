@@ -25,6 +25,7 @@ public class VelocityMove : NetworkBehaviour
     Vector3 _previousPosition;
     Rigidbody _rigidbody;
     bool _isColliding;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +49,7 @@ public class VelocityMove : NetworkBehaviour
 
     void PIDMovement()
     {
-        Debug.LogError("PID");
+        
         float kp = (6f * frequency) * (6f * frequency) * 0.25f;
         float kd = 4.5f * frequency * damping;
         float g = 1 / (1 + kd * Time.fixedDeltaTime + kp * Time.fixedDeltaTime * Time.fixedDeltaTime);
@@ -56,6 +57,6 @@ public class VelocityMove : NetworkBehaviour
         float kdg = (kd + kp * Time.fixedDeltaTime) * g;
         Vector3 force = (target.position - transform.position) * ksg + (-_rigidbody.velocity) * kdg; ;
         _rigidbody.AddForce(force, ForceMode.Acceleration);
-        Debug.LogError("PID)))" + force);
+        
     }
 }
