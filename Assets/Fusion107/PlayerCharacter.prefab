@@ -7878,7 +7878,18 @@ MonoBehaviour:
   JumpForce: 5
   GravityValue: -9.81
   body: {fileID: 2593488555751240890}
+  bodyCollider: {fileID: 2029188793182313232}
+  planeCollider: {fileID: 0}
   bodySpeed: 300
+  allBodys:
+  - {fileID: 2593488555751240890}
+  - {fileID: 8492631597323000247}
+  - {fileID: 6257163650675815875}
+  - {fileID: 3461693243774260557}
+  - {fileID: 5122421474040207622}
+  - {fileID: 5650975475277955709}
+  - {fileID: 2769649224203411582}
+  - {fileID: 8877686750809779382}
   XRrig: {fileID: 5291765242749948141}
   leftStick:
     m_UseReference: 1

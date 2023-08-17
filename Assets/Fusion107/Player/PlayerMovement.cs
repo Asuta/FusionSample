@@ -21,7 +21,11 @@ namespace Fusion107
 
         [Header("body movement")]
         public Rigidbody body;
+        public Collider bodyCollider;
+        public Collider planeCollider;
         public float bodySpeed = 2f;
+        //define a list
+        public List<Rigidbody> allBodys = new List<Rigidbody>();
 
         [Header("XR rig")]
         public GameObject XRrig;
@@ -36,7 +40,22 @@ namespace Fusion107
         public override void Spawned()
         {
             Debug.LogError("Spawned");
+            //find a gameobject the name of floor,and get the collider to planeCollider
+            planeCollider = GameObject.Find("Floor").GetComponent<Collider>();
             XRrig.SetActive(HasStateAuthority);
+            //if (HasStateAuthority == false) ,ignore collition between body and plane
+            if (HasStateAuthority == false)
+            {
+                Physics.IgnoreCollision(bodyCollider, planeCollider);
+                body.useGravity = false;
+                // set allbodys to unuse gravity
+                foreach (Rigidbody rb in allBodys)
+                {
+                    rb.useGravity = false;
+                }
+            }
+
+
 
         }
 
