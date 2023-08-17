@@ -121,7 +121,7 @@ namespace Fusion107
                 }
                 else
                 {
-                    body.velocity = Vector3.zero;
+                    //body.velocity = Vector3.zero;
                 }
 
                 Vector3 move2 = new Vector3(rightStick.action.ReadValue<Vector2>().x, 0, rightStick.action.ReadValue<Vector2>().y) * Runner.DeltaTime * bodySpeed;
@@ -131,10 +131,8 @@ namespace Fusion107
                 }
                 else
                 {
-                    XRrig.transform.position += Vector3.zero;
+                    //XRrig.transform.position += Vector3.zero;
                 }
-
-
             }
 
 
