@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 332650075}
   - component: {fileID: 332650074}
   - component: {fileID: 332650073}
+  - component: {fileID: 332650076}
   m_Layer: 0
   m_Name: Prototype Network Start
   m_TagString: Untagged
@@ -301,6 +302,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332650076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332650072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e1a82fc8f527b4ba23682cf5260591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugStart: {fileID: 332650074}
 --- !u!1 &1048957989
 GameObject:
   m_ObjectHideFlags: 0

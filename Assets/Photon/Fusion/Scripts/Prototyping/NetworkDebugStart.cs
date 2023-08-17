@@ -405,6 +405,7 @@ public class NetworkDebugStart : Fusion.Behaviour {
     if (CurrentStage != Stage.Disconnected) {
       yield break;
     }
+    
 
     bool includesServerStart = serverMode != GameMode.Shared && serverMode != GameMode.Client && serverMode != GameMode.AutoHostOrClient;
 
