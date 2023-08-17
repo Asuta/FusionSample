@@ -55,12 +55,18 @@ namespace Fusion107
                 }
             }
 
-            //set allbodys to kinematic ,and 1 second later set to unkinematic
-            foreach (Rigidbody rb in allBodys)
+
+            if (HasStateAuthority)
             {
-                rb.isKinematic = true;
+                //set allbodys to kinematic ,and 1 second later set to unkinematic
+                foreach (Rigidbody rb in allBodys)
+                {
+                    rb.isKinematic = true;
+                }
+                StartCoroutine(SetKinematic());
             }
-            StartCoroutine(SetKinematic());
+
+
         }
 
         IEnumerator SetKinematic()
