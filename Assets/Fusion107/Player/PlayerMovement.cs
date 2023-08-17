@@ -65,7 +65,7 @@ namespace Fusion107
 
         IEnumerator SetKinematic()
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(5f);
             foreach (Rigidbody rb in allBodys)
             {
                 rb.isKinematic = false;
