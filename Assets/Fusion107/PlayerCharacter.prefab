@@ -7916,6 +7916,30 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 8129960120530506349, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  Abutton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Abutton
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: fcd5697b-6360-4721-ba13-d8c21f20e82d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -2484334843112794088, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  Bbutton:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Bbutton
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: a4e5e629-67cc-4557-947d-a271ca7dccd4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -54779414955553795, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!114 &8806593921310676997
 MonoBehaviour:
   m_ObjectHideFlags: 0

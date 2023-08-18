@@ -33,6 +33,10 @@ namespace Fusion107
         public GameObject XRrig;
         public InputActionProperty leftStick;
         public InputActionProperty rightStick;
+        public InputActionProperty Abutton;
+        public InputActionProperty Bbutton;
+        public float upDownSpeed;
+
 
         private void Awake()
         {
@@ -159,6 +163,19 @@ namespace Fusion107
                 {
                     //XRrig.transform.position += Vector3.zero;
                 }
+
+
+
+                //buttonA,让xrrig往上移动，buttonB，让xrrig往下移动
+                if (Abutton.action.triggered)
+                {
+                    XRrig.transform.position += new Vector3(0, upDownSpeed, 0);
+                }
+                if (Bbutton.action.triggered)
+                {
+                    XRrig.transform.position += new Vector3(0, -upDownSpeed, 0);
+                }
+
             }
 
 
