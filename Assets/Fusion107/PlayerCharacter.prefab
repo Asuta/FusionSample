@@ -6958,10 +6958,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3462446726354234328}
-  m_LocalRotation: {x: -0, y: 0, z: -1, w: -0.00000037252897}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9442017, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.41, y: 0, z: 0}
+  m_LocalScale: {x: 0.53, y: 0.27260548, z: 0.27260548}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4428156746998025347}
   m_RootOrder: -1
@@ -7096,9 +7096,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3534214866126850099}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.9442015, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.41, y: 0, z: 0}
+  m_LocalScale: {x: 0.53, y: 0.27260548, z: 0.27260548}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4719923373487056185}
   m_RootOrder: -1
@@ -8151,6 +8151,31 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -54779414955553795, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   upDownSpeed: 3
+  grabRadius: 0.23
+  leftGrab:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Left Grab
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b9a6f9e9-ae1c-44ff-9532-6ef94a0a315f
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  rightGrab:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Right Grab
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 36026dc5-e938-433f-aeea-33dd75f13ccf
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftHandRb: {fileID: 2769649224203411582}
   leftHandGrabT: {fileID: 3691835136788247283}
   rightHandRb: {fileID: 3461693243774260557}

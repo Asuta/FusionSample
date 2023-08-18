@@ -5,6 +5,7 @@ using Fusion;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.EventSystems;
+using System;
 
 namespace Fusion107
 {
@@ -38,6 +39,9 @@ namespace Fusion107
         public float upDownSpeed;
 
         [Header("hand Grab")]
+        public float grabRadius;
+        public InputActionProperty leftGrab;
+        public InputActionProperty rightGrab;
         public Rigidbody leftHandRb;
         public Transform leftHandGrabT;
         public Rigidbody rightHandRb;
@@ -103,8 +107,7 @@ namespace Fusion107
                 _jumpPressed = true;
             }
 
-            Debug.LogError("leftStick: " + leftStick.action.ReadValue<Vector2>());
-            Debug.LogError("rightStick: " + rightStick.action.ReadValue<Vector2>());
+
 
 
             if (HasStateAuthority)
@@ -119,44 +122,92 @@ namespace Fusion107
                 {
                     XRrig.transform.position += new Vector3(0, -upDownSpeed, 0);
                 }
+
+                if (leftGrab.action.triggered)
+                {
+                    //make a spherecast ,and all the collider in the spherecast will be in the array,then add a fixedjoint to the first collider in the array
+                    GrabSomething(leftHandGrabT, leftHandRb);
+                }
+                if (rightGrab.action.triggered)
+                {
+                    GrabSomething(rightHandGrabT, rightHandRb);
+                }
+
+                if (leftGrab.action.WasReleasedThisFrame())
+                {
+                    Debug.LogError("leftGrab released");
+                    //remove the fixedjoint
+                    TakeOutSomething(leftHandRb);
+                }
+                if (rightGrab.action.WasReleasedThisFrame())
+                {
+                    Debug.LogError("rightGrab released");
+                    TakeOutSomething(rightHandRb);
+                }
+
+
             }
 
 
-            //在leftHandGrabT的位置画一个球形线框，只需要在scene里看到，不需要在build里看到
-            Debug.DrawLine(leftHandGrabT.position, leftHandGrabT.position + leftHandGrabT.forward * 0.1f, Color.red);
-
-            GenerateSphere();
-
-
+            
         }
 
-        private void GenerateSphere()
+        private void GrabSomething(Transform HandGrabT, Rigidbody HandRb)
         {
-            int resolution = 8; // 球体的分辨率，可以根据需要调整
+            Collider[] colliders = Physics.OverlapSphere(HandGrabT.position, grabRadius);
 
-            for (int i = 0; i < resolution; i++)
+            //把rigidboy =  HandRb的collider从数组中去掉
+            for (int i = 0; i < colliders.Length; i++)
             {
-                for (int j = 0; j < resolution; j++)
+                if (colliders[i].GetComponent<Rigidbody>() == HandRb)
                 {
-                    float u = (float)i / (resolution - 1);
-                    float v = (float)j / (resolution - 1);
+                    colliders[i] = null;
+                }
+            }
 
-                    float theta = u * Mathf.PI * 2;
-                    float phi = v * Mathf.PI;
+            
 
-                    float x = Mathf.Sin(phi) * Mathf.Cos(theta);
-                    float y = Mathf.Cos(phi);
-                    float z = Mathf.Sin(phi) * Mathf.Sin(theta);
+            // if (colliders.Length > 0)
+            // {
+            //     Debug.LogError(colliders[0].gameObject.name);
+            //     FixedJoint fixedJoint = HandRb.gameObject.AddComponent<FixedJoint>();
+            //     fixedJoint.connectedBody = colliders[0].GetComponent<Rigidbody>();
+            // }
 
-                    Vector3 point = new Vector3(x, y, z);
-                    Vector3 nextPointU = new Vector3(Mathf.Sin(phi) * Mathf.Cos(theta + Mathf.PI / resolution), Mathf.Cos(phi), Mathf.Sin(phi) * Mathf.Sin(theta + Mathf.PI / resolution));
-                    Vector3 nextPointV = new Vector3(Mathf.Sin(phi + Mathf.PI / resolution) * Mathf.Cos(theta), Mathf.Cos(phi + Mathf.PI / resolution), Mathf.Sin(phi + Mathf.PI / resolution) * Mathf.Sin(theta));
 
-                    Debug.DrawLine(point, nextPointU, Color.white);
-                    Debug.DrawLine(point, nextPointV, Color.white);
+            // when collider's rigidbody is not null,add a fixedjoint to the collider in the array,use loop
+            foreach (Collider collider in colliders)
+            {
+                if (collider != null && collider.GetComponent<Rigidbody>() != null)
+                {
+                    Debug.LogError(collider.gameObject.name);
+                    FixedJoint fixedJoint = HandRb.gameObject.AddComponent<FixedJoint>();
+                    fixedJoint.connectedBody = collider.GetComponent<Rigidbody>();
                 }
             }
         }
+
+        private void TakeOutSomething(Rigidbody HandRb)
+        {
+            FixedJoint[] fixedJoints = HandRb.GetComponents<FixedJoint>();
+            foreach (FixedJoint fixedJoint in fixedJoints)
+            {
+                fixedJoint.connectedBody = null;
+                Destroy(fixedJoint);
+            }
+        }
+
+
+
+
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.DrawWireSphere(leftHandGrabT.position, grabRadius);
+            Gizmos.DrawWireSphere(rightHandGrabT.position, grabRadius);
+        }
+
+
 
         public override void FixedUpdateNetwork()
         {
