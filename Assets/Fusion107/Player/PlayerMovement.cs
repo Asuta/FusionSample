@@ -98,6 +98,21 @@ namespace Fusion107
 
             Debug.LogError("leftStick: " + leftStick.action.ReadValue<Vector2>());
             Debug.LogError("rightStick: " + rightStick.action.ReadValue<Vector2>());
+
+
+            if (HasStateAuthority)
+            {
+
+                //buttonA,让xrrig往上移动，buttonB，让xrrig往下移动
+                if (Abutton.action.triggered)
+                {
+                    XRrig.transform.position += new Vector3(0, upDownSpeed, 0);
+                }
+                if (Bbutton.action.triggered)
+                {
+                    XRrig.transform.position += new Vector3(0, -upDownSpeed, 0);
+                }
+            }
         }
 
         public override void FixedUpdateNetwork()
@@ -143,8 +158,8 @@ namespace Fusion107
                 Vector3 newVector = new Vector3(0, headDirection.eulerAngles.y, 0);
                 //把newVector转换成四元数
                 Quaternion newQuaternion = Quaternion.Euler(newVector);
-                move = newQuaternion* move;
-                if (move != Vector3.zero) 
+                move = newQuaternion * move;
+                if (move != Vector3.zero)
                 {
                     body.velocity = move;
                 }
@@ -166,15 +181,6 @@ namespace Fusion107
 
 
 
-                //buttonA,让xrrig往上移动，buttonB，让xrrig往下移动
-                if (Abutton.action.triggered)
-                {
-                    XRrig.transform.position += new Vector3(0, upDownSpeed, 0);
-                }
-                if (Bbutton.action.triggered)
-                {
-                    XRrig.transform.position += new Vector3(0, -upDownSpeed, 0);
-                }
 
             }
 
