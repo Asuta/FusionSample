@@ -37,6 +37,13 @@ namespace Fusion107
         public InputActionProperty Bbutton;
         public float upDownSpeed;
 
+        [Header("hand Grab")]
+        public Rigidbody leftHandRb;
+        public Transform leftHandGrabT;
+        public Rigidbody rightHandRb;
+        public Transform rightHandGrabT;
+
+
 
         private void Awake()
         {
@@ -113,6 +120,42 @@ namespace Fusion107
                     XRrig.transform.position += new Vector3(0, -upDownSpeed, 0);
                 }
             }
+
+
+            //在leftHandGrabT的位置画一个球形线框，只需要在scene里看到，不需要在build里看到
+            Debug.DrawLine(leftHandGrabT.position, leftHandGrabT.position + leftHandGrabT.forward * 0.1f, Color.red);
+
+            GenerateSphere();
+
+
+        }
+
+        private void GenerateSphere()
+        {
+            int resolution = 8; // 球体的分辨率，可以根据需要调整
+
+            for (int i = 0; i < resolution; i++)
+            {
+                for (int j = 0; j < resolution; j++)
+                {
+                    float u = (float)i / (resolution - 1);
+                    float v = (float)j / (resolution - 1);
+
+                    float theta = u * Mathf.PI * 2;
+                    float phi = v * Mathf.PI;
+
+                    float x = Mathf.Sin(phi) * Mathf.Cos(theta);
+                    float y = Mathf.Cos(phi);
+                    float z = Mathf.Sin(phi) * Mathf.Sin(theta);
+
+                    Vector3 point = new Vector3(x, y, z);
+                    Vector3 nextPointU = new Vector3(Mathf.Sin(phi) * Mathf.Cos(theta + Mathf.PI / resolution), Mathf.Cos(phi), Mathf.Sin(phi) * Mathf.Sin(theta + Mathf.PI / resolution));
+                    Vector3 nextPointV = new Vector3(Mathf.Sin(phi + Mathf.PI / resolution) * Mathf.Cos(theta), Mathf.Cos(phi + Mathf.PI / resolution), Mathf.Sin(phi + Mathf.PI / resolution) * Mathf.Sin(theta));
+
+                    Debug.DrawLine(point, nextPointU, Color.white);
+                    Debug.DrawLine(point, nextPointV, Color.white);
+                }
+            }
         }
 
         public override void FixedUpdateNetwork()
@@ -178,8 +221,6 @@ namespace Fusion107
                 {
                     //XRrig.transform.position += Vector3.zero;
                 }
-
-
 
 
             }
