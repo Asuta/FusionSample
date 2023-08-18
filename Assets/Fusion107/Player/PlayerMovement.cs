@@ -4,6 +4,7 @@ using UnityEngine;
 using Fusion;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.EventSystems;
 
 namespace Fusion107
 {
@@ -26,6 +27,7 @@ namespace Fusion107
         public float bodySpeed = 2f;
         //define a list
         public List<Rigidbody> allBodys = new List<Rigidbody>();
+        public Transform headDirection;
 
         [Header("XR rig")]
         public GameObject XRrig;
@@ -133,7 +135,12 @@ namespace Fusion107
                 //Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * bodySpeed;
                 Vector3 move = new Vector3(leftStick.action.ReadValue<Vector2>().x, 0, leftStick.action.ReadValue<Vector2>().y) * Runner.DeltaTime * bodySpeed;
                 move += new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * bodySpeed;
-                if (move != Vector3.zero)
+                // 做一个新的向量，x轴是headDirection的欧拉角的0，y轴是
+                Vector3 newVector = new Vector3(0, headDirection.eulerAngles.y, 0);
+                //把newVector转换成四元数
+                Quaternion newQuaternion = Quaternion.Euler(newVector);
+                move = newQuaternion* move;
+                if (move != Vector3.zero) 
                 {
                     body.velocity = move;
                 }
@@ -143,6 +150,7 @@ namespace Fusion107
                 }
 
                 Vector3 move2 = new Vector3(rightStick.action.ReadValue<Vector2>().x, 0, rightStick.action.ReadValue<Vector2>().y) * Runner.DeltaTime * bodySpeed;
+                move2 = newQuaternion * move2;
                 if (move2 != Vector3.zero)
                 {
                     XRrig.transform.position += move2 * 0.05f;

@@ -7890,6 +7890,7 @@ MonoBehaviour:
   - {fileID: 5650975475277955709}
   - {fileID: 2769649224203411582}
   - {fileID: 8877686750809779382}
+  headDirection: {fileID: 5933080176902479028}
   XRrig: {fileID: 5291765242749948141}
   leftStick:
     m_UseReference: 1
@@ -9391,7 +9392,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4863638524859195522}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6adab2c3af16b734aa1e309d7be04ba3, type: 3}
   m_Name: 
@@ -13540,7 +13541,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6755328455932622651}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6adab2c3af16b734aa1e309d7be04ba3, type: 3}
   m_Name: 
