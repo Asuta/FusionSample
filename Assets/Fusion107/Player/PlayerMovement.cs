@@ -298,8 +298,8 @@ namespace Fusion107
                     }
                 }
                 
-                ball.AssignInputAuthority(Object.InputAuthority);
                 ball.RequestStateAuthority();
+                ball.AssignInputAuthority(Object.InputAuthority);
             }
         }
     }
