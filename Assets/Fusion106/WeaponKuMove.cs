@@ -20,7 +20,7 @@ public class WeaponKuMove : NetworkBehaviour
         {
 
             thisT.GetChild(i).gameObject.SetActive(false);
-
+ 
         }
     }
     // Start is called before the first frame update
