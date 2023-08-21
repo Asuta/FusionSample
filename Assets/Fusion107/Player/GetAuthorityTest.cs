@@ -26,4 +26,19 @@ public class GetAuthorityTest : MonoBehaviour
             obj.Object.RequestStateAuthority();
         }
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            //Debug.LogError(other.transform.root.name);
+            Transform root = other.transform.root;
+            var obj = root.GetComponent<NetworkObject>();
+            obj.RequestStateAuthority();
+            
+            Debug.LogError(obj.InputAuthority);
+            this.transform.GetComponent<NetworkObject>().AssignInputAuthority(obj.InputAuthority);
+
+        }
+    }
 }
