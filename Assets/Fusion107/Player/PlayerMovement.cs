@@ -280,6 +280,16 @@ namespace Fusion107
 
 
         }
+
+        public void OnBallCollider(NetworkObject ball)
+        {
+            //只有本地执行
+            if (Object.HasInputAuthority)
+            {
+                ball.AssignInputAuthority(Object.InputAuthority);
+                ball.RequestStateAuthority();
+            }
+        }
     }
 
 }

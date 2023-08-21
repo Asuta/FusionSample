@@ -2,16 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Fusion;
+using Fusion107;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class GetAuthorityTest : MonoBehaviour
+public class GetAuthorityTest : NetworkBehaviour
 {
     // Start is called before the first frame update
-    private NetworkBehaviour ballObj;
-        
-    void Start()
+    private NetworkObject ballObj;
+    public PlayerRef localPlayer;
+
+    public override void Spawned()
     {
-        ballObj = transform.GetComponent<NetworkBehaviour>();
+        ballObj = transform.GetComponent<NetworkObject>();
     }
 
     // Update is called once per frame
@@ -24,8 +27,14 @@ public class GetAuthorityTest : MonoBehaviour
     {
         if (GUI.Button(new Rect(10, 10, 100, 30),("GetAuthority")))
         {
-            ballObj.Object.RequestStateAuthority();
+            GetAuthority();
         }
+    }
+
+    private void GetAuthority()
+    {
+        ballObj.AssignInputAuthority(localPlayer);
+        ballObj.RequestStateAuthority();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -34,11 +43,8 @@ public class GetAuthorityTest : MonoBehaviour
         {
             //Debug.LogError(other.transform.root.name);
             Transform root = other.transform.root;
-            var player = root.GetComponent<NetworkObject>();
-            ballObj.Object.RequestStateAuthority();
-            
-            Debug.LogError(player.InputAuthority);
-            ballObj.Object.AssignInputAuthority(player.InputAuthority);
+            var player = root.GetComponent<PlayerMovement>();
+            player.OnBallCollider(ballObj);
         }
     }
 }

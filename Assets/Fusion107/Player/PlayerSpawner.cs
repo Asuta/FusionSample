@@ -8,7 +8,7 @@ namespace Fusion107
     {
         public GameObject PlayerPrefab;
         private NetworkRunner _runner;
-
+        public GetAuthorityTest ball;
         private void Awake()
         {
             _runner = GetComponent<NetworkRunner>();
@@ -24,6 +24,7 @@ namespace Fusion107
             if (player == Runner.LocalPlayer)
             {
                 Runner.Spawn(PlayerPrefab, new Vector3(0, 1, 0), Quaternion.identity, player);
+                ball.localPlayer = player;
             }
         }
     }
