@@ -7,9 +7,11 @@ using UnityEngine;
 public class GetAuthorityTest : MonoBehaviour
 {
     // Start is called before the first frame update
+    private NetworkBehaviour ballObj;
+        
     void Start()
     {
-        
+        ballObj = transform.GetComponent<NetworkBehaviour>();
     }
 
     // Update is called once per frame
@@ -22,8 +24,7 @@ public class GetAuthorityTest : MonoBehaviour
     {
         if (GUI.Button(new Rect(10, 10, 100, 30),("GetAuthority")))
         {
-            var obj = transform.GetComponent<NetworkBehaviour>();
-            obj.Object.RequestStateAuthority();
+            ballObj.Object.RequestStateAuthority();
         }
     }
 
@@ -33,12 +34,11 @@ public class GetAuthorityTest : MonoBehaviour
         {
             //Debug.LogError(other.transform.root.name);
             Transform root = other.transform.root;
-            var obj = root.GetComponent<NetworkObject>();
-            obj.RequestStateAuthority();
+            var player = root.GetComponent<NetworkObject>();
+            ballObj.Object.RequestStateAuthority();
             
-            Debug.LogError(obj.InputAuthority);
-            this.transform.GetComponent<NetworkObject>().AssignInputAuthority(obj.InputAuthority);
-
+            Debug.LogError(player.InputAuthority);
+            ballObj.Object.AssignInputAuthority(player.InputAuthority);
         }
     }
 }
