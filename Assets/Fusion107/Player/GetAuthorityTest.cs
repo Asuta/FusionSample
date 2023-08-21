@@ -39,12 +39,13 @@ public class GetAuthorityTest : NetworkBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == 7)
+        if (other.gameObject.layer.Equals(7))
         {
             //Debug.LogError(other.transform.root.name);
             Transform root = other.transform.root;
             var player = root.GetComponent<PlayerMovement>();
             player.OnBallCollider(ballObj);
+            //ballObj.RequestStateAuthority();
         }
     }
 }
