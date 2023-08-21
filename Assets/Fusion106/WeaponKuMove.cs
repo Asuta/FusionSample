@@ -31,10 +31,7 @@ public class WeaponKuMove : NetworkBehaviour
         for (int i = 0; i < thisT.childCount; i++)
         {
             thisT.GetChild(i).gameObject.transform.localPosition = Vector3.zero;
-
         }
-
-
 
     }
 

@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.EventSystems;
 using System;
+using com.cyborgAssets.inspectorButtonPro;
 
 namespace Fusion107
 {
@@ -107,6 +108,12 @@ namespace Fusion107
                 _jumpPressed = true;
             }
 
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                RPC_TakeOutWeapon(rightHandRb);
+            }
+
+
 
 
 
@@ -144,12 +151,18 @@ namespace Fusion107
                     Debug.LogError("rightGrab released");
                     TakeOutSomething(rightHandRb);
                 }
-
-
             }
 
+        }
 
-            
+
+
+        //[ProButton]
+        [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+        private void RPC_TakeOutWeapon(Rigidbody hahaef)
+        {
+            Debug.LogError("haha name ====" + hahaef.gameObject.name);
+            Debug.LogError("haha  hash name ====" + hahaef.gameObject.GetHashCode());
         }
 
         private void GrabSomething(Transform HandGrabT, Rigidbody HandRb)
@@ -165,7 +178,7 @@ namespace Fusion107
                 }
             }
 
-            
+
 
             // if (colliders.Length > 0)
             // {
