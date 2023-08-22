@@ -176,7 +176,7 @@ namespace Fusion107
         //     Debug.LogError("haha  hash name ====" + hahaef.gameObject.GetHashCode());
         // }
 
-        [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+        [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
         public void DealDamageRpc(NetworkId damageID, NetworkObject damageObj, float hehe)
         {
             // The code inside here will run on the client which owns this object (has state and input authority).
