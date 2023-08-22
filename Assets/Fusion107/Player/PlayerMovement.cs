@@ -52,24 +52,28 @@ namespace Fusion107
         public Rigidbody rightHandRb;
         public Transform rightHandGrabT;
 
-        [Header("test")]
-        public float testFloat;
-        //public NetworkObject thisNetworkObjectFrom;
-        [Networked]
-        public NetworkObject thisNetworkObject { get; set; }
-        public float hehe;
+        [Header("hand Grab  Sync")]
+        private float hahah;
+
         [Networked(OnChanged = nameof(OnHandGrabChanged))]
         public NetworkObject LeftHandGrabbedObject { get; set; }
-        
-        
-        
+        [Networked(OnChanged = nameof(OnHandGrabChanged))]
+        public NetworkObject RightHandGrabbedObject { get; set; }
+
+        [Header("test")]
+        public string testString;
+
+
+
+
+
 
 
         private static void OnHandGrabChanged(Changed<PlayerMovement> obj)
         {
             Debug.LogError("OnHandGrabChanged  name = " + obj.Behaviour.LeftHandGrabbedObject.name);
         }
-        
+
 
 
 
@@ -137,17 +141,6 @@ namespace Fusion107
 
 
 
-
-
-            //thisNetworkObject = thisNetworkObjectFrom;
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                DealDamageRpc(thisNetworkObject.Id, thisNetworkObject, hehe);
-            }
-
-
-
-
             if (HasStateAuthority)
             {
 
@@ -183,6 +176,24 @@ namespace Fusion107
                 }
             }
 
+
+            //string rpc test
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                RPC_SendMessage(testString);
+            }   
+
+
+
+
+        }
+
+
+        [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+        public void RPC_SendMessage(string message, RpcInfo info = default)
+        {
+            Debug.LogError("RPC_SendMessage  message = " + message);
+            
         }
 
 
@@ -195,17 +206,6 @@ namespace Fusion107
         //     Debug.LogError("haha  hash name ====" + hahaef.gameObject.GetHashCode());
         // }
 
-        [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-        public void DealDamageRpc(NetworkId damageID, NetworkObject damageObj, float hehe)
-        {
-            // The code inside here will run on the client which owns this object (has state and input authority).
-            Debug.Log("Received DealDamageRpc on StateAuthority, modifying Networked variable");
-            //PlayerSpeed -= damage;
-            // log the name of the object
-            Debug.LogError("damage name ====" + damageID);
-            Debug.LogError("damage  hash name ====" + damageObj.transform.name);
-            Debug.LogError("hehehe name ====" + hehe);
-        }
 
         private void GrabSomething(Transform HandGrabT, Rigidbody HandRb)
         {
