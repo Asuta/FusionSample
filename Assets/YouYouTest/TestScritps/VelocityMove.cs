@@ -37,6 +37,7 @@ public class VelocityMove : NetworkBehaviour
     {
 
     }
+    
     private void FixedUpdate()
     {
         //thisRb.velocity = (moveTarget.position - transform.position).normalized * velocityNum;

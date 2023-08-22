@@ -10,6 +10,9 @@ using com.cyborgAssets.inspectorButtonPro;
 
 namespace Fusion107
 {
+
+
+
     public class PlayerMovement : NetworkBehaviour
     {
         private CharacterController _controller;
@@ -52,10 +55,25 @@ namespace Fusion107
         [Header("test")]
         public float testFloat;
         //public NetworkObject thisNetworkObjectFrom;
-        [Networked] 
+        [Networked]
         public NetworkObject thisNetworkObject { get; set; }
-
         public float hehe;
+        [Networked(OnChanged = nameof(OnHandGrabChanged))]
+        public NetworkObject LeftHandGrabbedObject { get; set; }
+        
+        
+        
+
+
+        private static void OnHandGrabChanged(Changed<PlayerMovement> obj)
+        {
+            Debug.LogError("OnHandGrabChanged  name = " + obj.Behaviour.LeftHandGrabbedObject.name);
+        }
+        
+
+
+
+
 
 
 
@@ -118,7 +136,9 @@ namespace Fusion107
             }
 
 
- 
+
+
+
             //thisNetworkObject = thisNetworkObjectFrom;
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -143,7 +163,6 @@ namespace Fusion107
 
                 if (leftGrab.action.triggered)
                 {
-                    //make a spherecast ,and all the collider in the spherecast will be in the array,then add a fixedjoint to the first collider in the array
                     GrabSomething(leftHandGrabT, leftHandRb);
                 }
                 if (rightGrab.action.triggered)
@@ -203,14 +222,6 @@ namespace Fusion107
 
 
 
-            // if (colliders.Length > 0)
-            // {
-            //     Debug.LogError(colliders[0].gameObject.name);
-            //     FixedJoint fixedJoint = HandRb.gameObject.AddComponent<FixedJoint>();
-            //     fixedJoint.connectedBody = colliders[0].GetComponent<Rigidbody>();
-            // }
-
-
             // when collider's rigidbody is not null,add a fixedjoint to the collider in the array,use loop
             foreach (Collider collider in colliders)
             {
@@ -219,6 +230,8 @@ namespace Fusion107
                     Debug.LogError(collider.gameObject.name);
                     FixedJoint fixedJoint = HandRb.gameObject.AddComponent<FixedJoint>();
                     fixedJoint.connectedBody = collider.GetComponent<Rigidbody>();
+                    //结束这个循环
+                    break;
                 }
             }
         }
@@ -247,40 +260,6 @@ namespace Fusion107
 
         public override void FixedUpdateNetwork()
         {
-
-
-
-
-
-            // velocity.y += GravityValue * Runner.DeltaTime;
-            // if (_jumpPressed && _controller.isGrounded)
-            // {
-            //     velocity.y += JumpForce;
-            //     // Debug.LogError("Jump");
-            // }
-            // _jumpPressed = false;
-            // // Only move own player and not every other player. Each player controls its own player object.
-            // if (HasStateAuthority == false)
-            // {
-            //     return;
-            // }
-
-            // Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * Runner.DeltaTime * PlayerSpeed;
-
-
-            // if (move != Vector3.zero)
-            // {
-            //     gameObject.transform.forward = move;
-            // }
-
-            // _controller.Move(move + velocity * Runner.DeltaTime);
-
-            // if (_controller.isGrounded)
-            // {
-            //     velocity = new Vector3(0, -1, 0);
-            // }
-
-
 
             if (HasStateAuthority)
             {
