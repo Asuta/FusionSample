@@ -178,7 +178,7 @@ namespace Fusion107
             //PlayerSpeed -= damage;
             // log the name of the object
             Debug.LogError("damage name ====" + damageID);
-            Debug.LogError("damage  hash name ====" + damageObj.GetHashCode());
+            Debug.LogError("damage  hash name ====" + damageObj.name);
         }
 
         private void GrabSomething(Transform HandGrabT, Rigidbody HandRb)
