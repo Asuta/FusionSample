@@ -50,6 +50,7 @@ namespace Fusion107
 
         [Header("test")]
         public NetworkObject thisNetworkObject;
+        public float hehe;
 
 
 
@@ -116,7 +117,7 @@ namespace Fusion107
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                DealDamageRpc(thisNetworkObject.Id,thisNetworkObject);
+                DealDamageRpc(thisNetworkObject.Id,thisNetworkObject,hehe);
             }
 
 
@@ -171,7 +172,7 @@ namespace Fusion107
         // }
 
         [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-        public void DealDamageRpc(NetworkId damageID,NetworkObject damageObj)
+        public void DealDamageRpc(NetworkId damageID,NetworkObject damageObj,float hehe)
         {
             // The code inside here will run on the client which owns this object (has state and input authority).
             Debug.Log("Received DealDamageRpc on StateAuthority, modifying Networked variable");
@@ -179,6 +180,7 @@ namespace Fusion107
             // log the name of the object
             Debug.LogError("damage name ====" + damageID);
             Debug.LogError("damage  hash name ====" + damageObj.transform.name);
+            Debug.LogError("hehehe name ====" + hehe);
         }
 
         private void GrabSomething(Transform HandGrabT, Rigidbody HandRb)
