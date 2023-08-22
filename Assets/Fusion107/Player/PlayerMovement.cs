@@ -16,6 +16,7 @@ namespace Fusion107
 
         public float PlayerSpeed = 2f;
 
+
         public float JumpForce = 5f;
         public float GravityValue = -9.81f;
 
@@ -49,7 +50,11 @@ namespace Fusion107
         public Transform rightHandGrabT;
 
         [Header("test")]
-        public NetworkObject thisNetworkObject;
+        public float testFloat;
+        //public NetworkObject thisNetworkObjectFrom;
+        [Networked] 
+        public NetworkObject thisNetworkObject { get; set; }
+
         public float hehe;
 
 
@@ -113,11 +118,11 @@ namespace Fusion107
             }
 
 
-
-
+ 
+            //thisNetworkObject = thisNetworkObjectFrom;
             if (Input.GetKeyDown(KeyCode.F))
             {
-                DealDamageRpc(thisNetworkObject.Id,thisNetworkObject,hehe);
+                DealDamageRpc(thisNetworkObject.Id, thisNetworkObject, hehe);
             }
 
 
@@ -172,7 +177,7 @@ namespace Fusion107
         // }
 
         [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-        public void DealDamageRpc(NetworkId damageID,NetworkObject damageObj,float hehe)
+        public void DealDamageRpc(NetworkId damageID, NetworkObject damageObj, float hehe)
         {
             // The code inside here will run on the client which owns this object (has state and input authority).
             Debug.Log("Received DealDamageRpc on StateAuthority, modifying Networked variable");
