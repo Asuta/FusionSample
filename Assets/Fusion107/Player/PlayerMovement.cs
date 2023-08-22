@@ -62,6 +62,8 @@ namespace Fusion107
 
         [Header("test")]
         public string testString;
+        public int testInt;
+
 
 
 
@@ -181,7 +183,11 @@ namespace Fusion107
             if (Input.GetKeyDown(KeyCode.T))
             {
                 RPC_SendMessage(testString);
-            }   
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RPC_SendMessage(testInt);
+            }
 
 
 
@@ -193,7 +199,12 @@ namespace Fusion107
         public void RPC_SendMessage(string message, RpcInfo info = default)
         {
             Debug.LogError("RPC_SendMessage  message = " + message);
-            
+        }
+
+        [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+        public void RPC_SendMessage(int message, RpcInfo info = default)
+        {
+            Debug.LogError("RPC_SendMessage  message = " + message);
         }
 
 
