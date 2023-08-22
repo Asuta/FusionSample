@@ -48,6 +48,9 @@ namespace Fusion107
         public Rigidbody rightHandRb;
         public Transform rightHandGrabT;
 
+        [Header("test")]
+        public NetworkObject thisNetworkObject;
+
 
 
         private void Awake()
@@ -108,11 +111,13 @@ namespace Fusion107
                 _jumpPressed = true;
             }
 
+
+
+
             if (Input.GetKeyDown(KeyCode.F))
             {
-                RPC_TakeOutWeapon(rightHandRb);
+                DealDamageRpc(thisNetworkObject.Id,thisNetworkObject);
             }
-
 
 
 
@@ -158,11 +163,22 @@ namespace Fusion107
 
 
         //[ProButton]
-        [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
-        private void RPC_TakeOutWeapon(Rigidbody hahaef)
+        // [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
+        // private void RPC_TakeOutWeaponhaha(Rigidbody hahaef)
+        // {
+        //     Debug.LogError("haha name ====" + hahaef.gameObject.name);
+        //     Debug.LogError("haha  hash name ====" + hahaef.gameObject.GetHashCode());
+        // }
+
+        [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+        public void DealDamageRpc(NetworkId damageID,NetworkObject damageObj)
         {
-            Debug.LogError("haha name ====" + hahaef.gameObject.name);
-            Debug.LogError("haha  hash name ====" + hahaef.gameObject.GetHashCode());
+            // The code inside here will run on the client which owns this object (has state and input authority).
+            Debug.Log("Received DealDamageRpc on StateAuthority, modifying Networked variable");
+            //PlayerSpeed -= damage;
+            // log the name of the object
+            Debug.LogError("damage name ====" + damageID);
+            Debug.LogError("damage  hash name ====" + damageObj.GetHashCode());
         }
 
         private void GrabSomething(Transform HandGrabT, Rigidbody HandRb)
@@ -224,6 +240,10 @@ namespace Fusion107
 
         public override void FixedUpdateNetwork()
         {
+
+
+
+
 
             // velocity.y += GravityValue * Runner.DeltaTime;
             // if (_jumpPressed && _controller.isGrounded)

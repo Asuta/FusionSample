@@ -8180,6 +8180,7 @@ MonoBehaviour:
   leftHandGrabT: {fileID: 3691835136788247283}
   rightHandRb: {fileID: 3461693243774260557}
   rightHandGrabT: {fileID: 2743412358076913714}
+  thisNetworkObject: {fileID: 2807686388430554279}
 --- !u!114 &8806593921310676997
 MonoBehaviour:
   m_ObjectHideFlags: 0

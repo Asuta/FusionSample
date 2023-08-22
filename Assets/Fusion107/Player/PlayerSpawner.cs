@@ -25,6 +25,7 @@ namespace Fusion107
             {
                 Runner.Spawn(PlayerPrefab, new Vector3(0, 1, 0), Quaternion.identity, player);
             }
+            //_runner.TryFindObject(player, out PlayerController playerController);
         }
     }
 
