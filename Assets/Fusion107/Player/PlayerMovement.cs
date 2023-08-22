@@ -63,6 +63,7 @@ namespace Fusion107
         [Header("test")]
         public string testString;
         public int testInt;
+        public NetworkObject testNetObj;
 
 
 
@@ -186,7 +187,11 @@ namespace Fusion107
             }
             if (Input.GetKeyDown(KeyCode.R))
             {
-                RPC_SendMessage(testInt);
+                RPC_SendMessage2(testInt);
+            }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                RPC_SendMessage3(testNetObj);
             }
 
 
@@ -202,9 +207,17 @@ namespace Fusion107
         }
 
         [Rpc(RpcSources.InputAuthority, RpcTargets.All)]
-        public void RPC_SendMessage(int message, RpcInfo info = default)
+        public void RPC_SendMessage2(int message, RpcInfo info = default)
         {
             Debug.LogError("RPC_SendMessage  message = " + message);
+        }
+
+        [Rpc(RpcSources.StateAuthority, RpcTargets.StateAuthority)]
+        public void RPC_SendMessage3(NetworkObject haha, RpcInfo info = default)
+        {
+            //log haha gameobject name
+            Debug.LogError("hahhahahah  name = " + haha.transform.name);
+
         }
 
 
