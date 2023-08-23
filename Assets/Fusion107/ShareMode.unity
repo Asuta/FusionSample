@@ -917,6 +917,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2762267434732084984, guid: f3243a983b12907408d9d425eaafceb0, type: 3}
+      propertyPath: Flags
+      value: 133633
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762267434732084984, guid: f3243a983b12907408d9d425eaafceb0, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
+      value: -9058404609406947244
+      objectReference: {fileID: 0}
+    - target: {fileID: 2762267434732084984, guid: f3243a983b12907408d9d425eaafceb0, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
+      value: 4026269145399523233
+      objectReference: {fileID: 0}
     - target: {fileID: 2807686388430554279, guid: f3243a983b12907408d9d425eaafceb0, type: 3}
       propertyPath: Flags
       value: 133633
@@ -936,6 +948,18 @@ PrefabInstance:
     - target: {fileID: 4066085844078129933, guid: f3243a983b12907408d9d425eaafceb0, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286911994212481657, guid: f3243a983b12907408d9d425eaafceb0, type: 3}
+      propertyPath: Flags
+      value: 133633
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286911994212481657, guid: f3243a983b12907408d9d425eaafceb0, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[0]
+      value: 8811722717079571938
+      objectReference: {fileID: 0}
+    - target: {fileID: 8286911994212481657, guid: f3243a983b12907408d9d425eaafceb0, type: 3}
+      propertyPath: NetworkGuid.RawGuidValue.Array.data[1]
+      value: -2057065390147136626
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1488,6 +1512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Go
       objectReference: {fileID: 0}
+    - target: {fileID: 1085658866317853679, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2084700930923210655, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
       propertyPath: Flags
       value: 2561
@@ -1505,16 +1533,28 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8500715855589635768, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10.232075
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500715855589635768, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10.232075
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500715855589635768, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.232075
+      objectReference: {fileID: 0}
+    - target: {fileID: 8500715855589635768, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.7972374
+      value: 5.24
       objectReference: {fileID: 0}
     - target: {fileID: 8500715855589635768, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.92
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 8500715855589635768, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.631255
+      value: -2.94
       objectReference: {fileID: 0}
     - target: {fileID: 8500715855589635768, guid: f974cc241f8b8fd47a31f7375c509e49, type: 3}
       propertyPath: m_LocalRotation.w
