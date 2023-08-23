@@ -285,7 +285,7 @@ namespace Fusion107
                 Debug.LogError("anchorPosition = " + anchorPosition);
                 Debug.LogError("connectedAnchorPosition = " + connectedAnchorPosition);
                 // creat a configurablejoint
-                ConfigurableJoint fixedJoint = hand.GetComponent<ConfigurableJoint>();
+                ConfigurableJoint fixedJoint = hand.gameObject.AddComponent<ConfigurableJoint>();
                 //disable auto configure
                 fixedJoint.autoConfigureConnectedAnchor = false;
                 //set the joint 's all move and rotation to lock
