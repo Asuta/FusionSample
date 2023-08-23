@@ -59,9 +59,9 @@ namespace Fusion107
 
         public GameObject[] unGrabableObjects;
 
-        
-        
-        
+
+
+
         [Header("hand Grab  Sync")]
         private float hahah;
 
@@ -282,12 +282,12 @@ namespace Fusion107
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
         public void RPC_Grab(NetworkObject grabThing, NetworkObject hand, Vector3 anchorPosition, Vector3 connectedAnchorPosition, RpcInfo info = default)
         {
-            if(hand == leftHandNetworkObject)
+            if (hand == leftHandNetworkObject)
             {
                 Debug.LogError("leftHandNetworkObject");
             }
 
-            if(hand == rightHandNetworkObject)
+            if (hand == rightHandNetworkObject)
             {
                 Debug.LogError("rightHandNetworkObject");
             }
@@ -303,11 +303,31 @@ namespace Fusion107
             if (hand == leftHandNetworkObject)
             {
                 Debug.LogError("leftHandNetworkObject");
+                leftHandJoint.connectedBody = grabThing.GetComponent<Rigidbody>();
+                leftHandJoint.anchor = anchorPosition;
+                leftHandJoint.connectedAnchor = connectedAnchorPosition;
+                // set move and rotation to lock
+                leftHandJoint.xMotion = ConfigurableJointMotion.Locked;
+                leftHandJoint.yMotion = ConfigurableJointMotion.Locked;
+                leftHandJoint.zMotion = ConfigurableJointMotion.Locked;
+                leftHandJoint.angularXMotion = ConfigurableJointMotion.Locked;
+                leftHandJoint.angularYMotion = ConfigurableJointMotion.Locked;
+                leftHandJoint.angularZMotion = ConfigurableJointMotion.Locked;
             }
 
             if (hand == rightHandNetworkObject)
             {
                 Debug.LogError("rightHandNetworkObject");
+                rightHandJoint.connectedBody = grabThing.GetComponent<Rigidbody>();
+                rightHandJoint.anchor = anchorPosition;
+                rightHandJoint.connectedAnchor = connectedAnchorPosition;
+                // set move and rotation to lock
+                rightHandJoint.xMotion = ConfigurableJointMotion.Locked;
+                rightHandJoint.yMotion = ConfigurableJointMotion.Locked;
+                rightHandJoint.zMotion = ConfigurableJointMotion.Locked;
+                rightHandJoint.angularXMotion = ConfigurableJointMotion.Locked;
+                rightHandJoint.angularYMotion = ConfigurableJointMotion.Locked;
+                rightHandJoint.angularZMotion = ConfigurableJointMotion.Locked;
             }
         }
 
@@ -322,22 +342,55 @@ namespace Fusion107
                 fixedJoint.connectedBody = null;
                 Destroy(fixedJoint);
             }
-            RPC_TakeOutSometing(HandRb.GetComponent<NetworkObject>());
+            RPC_TakeOutSometing2(HandRb.GetComponent<NetworkObject>());
         }
 
+        // [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+        // public void RPC_TakeOutSometing(NetworkObject hand, RpcInfo info = default)
+        // {
+        //     if (!HasStateAuthority)
+        //     {
+        //         ConfigurableJoint[] fixedJoints = hand.GetComponents<ConfigurableJoint>();
+        //         foreach (ConfigurableJoint fixedJoint in fixedJoints)
+        //         {
+        //             fixedJoint.connectedBody = null;
+        //             Destroy(fixedJoint);
+        //         }
+        //     }
+        // }
+
+
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        public void RPC_TakeOutSometing(NetworkObject hand, RpcInfo info = default)
+        public void RPC_TakeOutSometing2(NetworkObject hand, RpcInfo info = default)
         {
-            if (!HasStateAuthority)
+            if (HasStateAuthority)
+                return;
+
+            if (hand == leftHandNetworkObject)
             {
-                ConfigurableJoint[] fixedJoints = hand.GetComponents<ConfigurableJoint>();
-                foreach (ConfigurableJoint fixedJoint in fixedJoints)
-                {
-                    fixedJoint.connectedBody = null;
-                    Destroy(fixedJoint);
-                }
+                Debug.LogError("leftHandNetworkObject");
+                leftHandJoint.connectedBody = null;
+                //set move and rotation to free
+                leftHandJoint.xMotion = ConfigurableJointMotion.Free;
+                leftHandJoint.yMotion = ConfigurableJointMotion.Free;
+                leftHandJoint.zMotion = ConfigurableJointMotion.Free;
+                leftHandJoint.angularXMotion = ConfigurableJointMotion.Free;
+                leftHandJoint.angularYMotion = ConfigurableJointMotion.Free;
+                leftHandJoint.angularZMotion = ConfigurableJointMotion.Free;
             }
 
+            if (hand == rightHandNetworkObject)
+            {
+                Debug.LogError("rightHandNetworkObject");
+                rightHandJoint.connectedBody = null;
+                //set move and rotation to free
+                rightHandJoint.xMotion = ConfigurableJointMotion.Free;
+                rightHandJoint.yMotion = ConfigurableJointMotion.Free;
+                rightHandJoint.zMotion = ConfigurableJointMotion.Free;
+                rightHandJoint.angularXMotion = ConfigurableJointMotion.Free;
+                rightHandJoint.angularYMotion = ConfigurableJointMotion.Free;
+                rightHandJoint.angularZMotion = ConfigurableJointMotion.Free;
+            }
         }
 
 
