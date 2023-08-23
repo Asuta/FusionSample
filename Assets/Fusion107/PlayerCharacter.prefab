@@ -11131,7 +11131,7 @@ ConfigurableJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5325232077161768915}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 8877686750809779382}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: -0.5, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
@@ -13802,7 +13802,7 @@ ConfigurableJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6701317117227505012}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 6257163650675815875}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: -0.5, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
