@@ -265,7 +265,7 @@ namespace Fusion107
                     fixedJoint.angularXMotion = ConfigurableJointMotion.Locked;
                     fixedJoint.angularYMotion = ConfigurableJointMotion.Locked;
                     fixedJoint.angularZMotion = ConfigurableJointMotion.Locked;
-                    RPC_SendMessage4();
+                    RPC_SendMessage4(collider.GetComponent<NetworkObject>(),HandRb.GetComponent<NetworkObject>(),fixedJoint.anchor,fixedJoint.connectedAnchor);
                     //结束这个循环
                     break;
                 }
@@ -274,12 +274,35 @@ namespace Fusion107
 
 
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        public void RPC_SendMessage4(RpcInfo info = default)
+        public void RPC_SendMessage4(NetworkObject grabThing,NetworkObject hand,Vector3 anchorPosition,Vector3 connectedAnchorPosition,RpcInfo info = default)
         {
             if (!HasStateAuthority)
             {
                 Debug.LogError("666666666666666");
-            }            
+                //log this four parameter
+                Debug.LogError("grabThing name = " + grabThing.name);
+                Debug.LogError("hand name = " + hand.name);
+                Debug.LogError("anchorPosition = " + anchorPosition);
+                Debug.LogError("connectedAnchorPosition = " + connectedAnchorPosition);
+                // creat a configurablejoint
+                ConfigurableJoint fixedJoint = hand.GetComponent<ConfigurableJoint>();
+                //disable auto configure
+                fixedJoint.autoConfigureConnectedAnchor = false;
+                //set the joint 's all move and rotation to lock
+                fixedJoint.xMotion = ConfigurableJointMotion.Locked;
+                fixedJoint.yMotion = ConfigurableJointMotion.Locked;
+                fixedJoint.zMotion = ConfigurableJointMotion.Locked;
+                fixedJoint.angularXMotion = ConfigurableJointMotion.Locked;
+                fixedJoint.angularYMotion = ConfigurableJointMotion.Locked;
+                fixedJoint.angularZMotion = ConfigurableJointMotion.Locked;
+                //set the joint 's anchor and connectedAnchor
+                fixedJoint.anchor = anchorPosition;
+                fixedJoint.connectedAnchor = connectedAnchorPosition;
+                //set the joint 's connectedBody
+                fixedJoint.connectedBody = grabThing.GetComponent<Rigidbody>();
+
+                
+            }
         }
 
 
