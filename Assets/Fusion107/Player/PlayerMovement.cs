@@ -51,6 +51,7 @@ namespace Fusion107
         public Transform leftHandGrabT;
         public Rigidbody rightHandRb;
         public Transform rightHandGrabT;
+        public GameObject[] unGrabableObjects;
 
         [Header("hand Grab  Sync")]
         private float hahah;
@@ -91,16 +92,16 @@ namespace Fusion107
 
         public override void Spawned()
         {
-            Debug.LogError("Spawned");
-            //find a gameobject the name of floor,and get the collider to planeCollider
+            
+            // 找到名为“Floor”的游戏对象，并获取其碰撞器以赋值给planeCollider
             planeCollider = GameObject.Find("Floor").GetComponent<Collider>();
             XRrig.SetActive(HasStateAuthority);
-            //if (HasStateAuthority == false) ,ignore collition between body and plane
+            // 如果没有状态权限，则忽略bodyCollider和planeCollider之间的碰撞
             if (HasStateAuthority == false)
             {
                 Physics.IgnoreCollision(bodyCollider, planeCollider);
                 body.useGravity = false;
-                // set allbodys to unuse gravity
+                // 将allBodys中的所有刚体的useGravity属性设置为false
                 foreach (Rigidbody rb in allBodys)
                 {
                     rb.useGravity = false;
@@ -109,12 +110,22 @@ namespace Fusion107
 
             if (HasStateAuthority)
             {
-                //set allbodys to kinematic ,and 1 second later set to unkinematic
+                // 将allBodys中的所有刚体的isKinematic属性设置为true，1秒后设置为false
                 foreach (Rigidbody rb in allBodys)
                 {
                     rb.isKinematic = true;
                 }
                 StartCoroutine(SetKinematic());
+
+                //foreach (GameObject obj in unGrabableObjects),and set all of this and there children's tag to "unGrabable"
+                foreach (GameObject obj in unGrabableObjects)
+                {
+                    obj.tag = "unGrabable";
+                    foreach (Transform child in obj.transform)
+                    {
+                        child.tag = "unGrabable";
+                    }
+                }
             }
 
 
@@ -212,7 +223,7 @@ namespace Fusion107
             Debug.LogError("RPC_SendMessage  message = " + message);
         }
 
-        [Rpc(RpcSources.StateAuthority, RpcTargets.StateAuthority)]
+        [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
         public void RPC_SendMessage3(NetworkObject haha, RpcInfo info = default)
         {
             //log haha gameobject name
@@ -249,7 +260,7 @@ namespace Fusion107
             // when collider's rigidbody is not null,add a fixedjoint to the collider in the array,use loop
             foreach (Collider collider in colliders)
             {
-                if (collider != null && collider.GetComponent<Rigidbody>() != null)
+                if (collider != null && collider.GetComponent<Rigidbody>() != null&&collider.tag!="unGrabable")
                 {
                     Debug.LogError(collider.gameObject.name);
                     FixedJoint fixedJoint = HandRb.gameObject.AddComponent<FixedJoint>();

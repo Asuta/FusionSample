@@ -8180,7 +8180,16 @@ MonoBehaviour:
   leftHandGrabT: {fileID: 3691835136788247283}
   rightHandRb: {fileID: 3461693243774260557}
   rightHandGrabT: {fileID: 2743412358076913714}
-  thisNetworkObject: {fileID: 2807686388430554279}
+  unGrabableObjects:
+  - {fileID: 5325232077161768915}
+  - {fileID: 1913726453449915035}
+  - {fileID: 6701317117227505012}
+  - {fileID: 2127097648175417186}
+  _LeftHandGrabbedObject: {fileID: 0}
+  _RightHandGrabbedObject: {fileID: 0}
+  testString: 
+  testInt: 0
+  testNetObj: {fileID: 0}
 --- !u!114 &8806593921310676997
 MonoBehaviour:
   m_ObjectHideFlags: 0
