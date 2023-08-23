@@ -256,8 +256,15 @@ namespace Fusion107
                 if (collider != null && collider.GetComponent<Rigidbody>() != null && collider.tag != "unGrabable")
                 {
                     Debug.LogError(collider.gameObject.name);
-                    FixedJoint fixedJoint = HandRb.gameObject.AddComponent<FixedJoint>();
+                    ConfigurableJoint fixedJoint = HandRb.gameObject.AddComponent<ConfigurableJoint>();
                     fixedJoint.connectedBody = collider.GetComponent<Rigidbody>();
+                    //set the joint 's all move and rotation to lock
+                    fixedJoint.xMotion = ConfigurableJointMotion.Locked;
+                    fixedJoint.yMotion = ConfigurableJointMotion.Locked;
+                    fixedJoint.zMotion = ConfigurableJointMotion.Locked;
+                    fixedJoint.angularXMotion = ConfigurableJointMotion.Locked;
+                    fixedJoint.angularYMotion = ConfigurableJointMotion.Locked;
+                    fixedJoint.angularZMotion = ConfigurableJointMotion.Locked;
                     RPC_SendMessage4();
                     //结束这个循环
                     break;
@@ -272,23 +279,16 @@ namespace Fusion107
             if (!HasStateAuthority)
             {
                 Debug.LogError("666666666666666");
-            }
-
-            
+            }            
         }
-
-
-
-
-
 
 
 
 
         private void TakeOutSomething(Rigidbody HandRb)
         {
-            FixedJoint[] fixedJoints = HandRb.GetComponents<FixedJoint>();
-            foreach (FixedJoint fixedJoint in fixedJoints)
+            ConfigurableJoint[] fixedJoints = HandRb.GetComponents<ConfigurableJoint>();
+            foreach (ConfigurableJoint fixedJoint in fixedJoints)
             {
                 fixedJoint.connectedBody = null;
                 Destroy(fixedJoint);
