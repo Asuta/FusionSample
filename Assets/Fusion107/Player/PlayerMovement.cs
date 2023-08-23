@@ -69,10 +69,6 @@ namespace Fusion107
 
 
 
-
-
-
-
         private static void OnHandGrabChanged(Changed<PlayerMovement> obj)
         {
             Debug.LogError("OnHandGrabChanged  name = " + obj.Behaviour.LeftHandGrabbedObject.name);
@@ -92,7 +88,7 @@ namespace Fusion107
 
         public override void Spawned()
         {
-            
+
             // 找到名为“Floor”的游戏对象，并获取其碰撞器以赋值给planeCollider
             planeCollider = GameObject.Find("Floor").GetComponent<Collider>();
             XRrig.SetActive(HasStateAuthority);
@@ -228,7 +224,6 @@ namespace Fusion107
         {
             //log haha gameobject name
             Debug.LogError("hahhahahah  name = " + haha.transform.name);
-
         }
 
 
@@ -255,21 +250,40 @@ namespace Fusion107
                 }
             }
 
-
-
             // when collider's rigidbody is not null,add a fixedjoint to the collider in the array,use loop
             foreach (Collider collider in colliders)
             {
-                if (collider != null && collider.GetComponent<Rigidbody>() != null&&collider.tag!="unGrabable")
+                if (collider != null && collider.GetComponent<Rigidbody>() != null && collider.tag != "unGrabable")
                 {
                     Debug.LogError(collider.gameObject.name);
                     FixedJoint fixedJoint = HandRb.gameObject.AddComponent<FixedJoint>();
                     fixedJoint.connectedBody = collider.GetComponent<Rigidbody>();
+                    RPC_SendMessage4();
                     //结束这个循环
                     break;
                 }
             }
         }
+
+
+        [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+        public void RPC_SendMessage4(RpcInfo info = default)
+        {
+            if (!HasStateAuthority)
+            {
+                Debug.LogError("666666666666666");
+            }
+
+            
+        }
+
+
+
+
+
+
+
+
 
         private void TakeOutSomething(Rigidbody HandRb)
         {
