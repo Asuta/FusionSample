@@ -265,7 +265,7 @@ namespace Fusion107
                     fixedJoint.angularXMotion = ConfigurableJointMotion.Locked;
                     fixedJoint.angularYMotion = ConfigurableJointMotion.Locked;
                     fixedJoint.angularZMotion = ConfigurableJointMotion.Locked;
-                    RPC_SendMessage4(collider.GetComponent<NetworkObject>(),HandRb.GetComponent<NetworkObject>(),fixedJoint.anchor,fixedJoint.connectedAnchor);
+                    RPC_SendMessage4(collider.GetComponent<NetworkObject>(), HandRb.GetComponent<NetworkObject>(), fixedJoint.anchor, fixedJoint.connectedAnchor);
                     //结束这个循环
                     break;
                 }
@@ -274,7 +274,7 @@ namespace Fusion107
 
 
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        public void RPC_SendMessage4(NetworkObject grabThing,NetworkObject hand,Vector3 anchorPosition,Vector3 connectedAnchorPosition,RpcInfo info = default)
+        public void RPC_SendMessage4(NetworkObject grabThing, NetworkObject hand, Vector3 anchorPosition, Vector3 connectedAnchorPosition, RpcInfo info = default)
         {
             if (!HasStateAuthority)
             {
@@ -301,7 +301,7 @@ namespace Fusion107
                 //set the joint 's connectedBody
                 fixedJoint.connectedBody = grabThing.GetComponent<Rigidbody>();
 
-                
+
             }
         }
 
@@ -316,6 +316,22 @@ namespace Fusion107
                 fixedJoint.connectedBody = null;
                 Destroy(fixedJoint);
             }
+            RPC_SendMessage5(HandRb.GetComponent<NetworkObject>());
+        }
+
+        [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+        public void RPC_SendMessage5(NetworkObject hand, RpcInfo info = default)
+        {
+            if (!HasStateAuthority)
+            {
+                ConfigurableJoint[] fixedJoints = hand.GetComponents<ConfigurableJoint>();
+                foreach (ConfigurableJoint fixedJoint in fixedJoints)
+                {
+                    fixedJoint.connectedBody = null;
+                    Destroy(fixedJoint);
+                }
+            }
+
         }
 
 
