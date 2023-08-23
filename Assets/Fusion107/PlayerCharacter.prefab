@@ -8383,8 +8383,12 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftHandRb: {fileID: 2769649224203411582}
+  leftHandJoint: {fileID: 624675560152538610}
+  leftHandNetworkObject: {fileID: 2762267434732084984}
   leftHandGrabT: {fileID: 3691835136788247283}
   rightHandRb: {fileID: 3461693243774260557}
+  rightHandJoint: {fileID: 9017253586391228615}
+  rightHandNetworkObject: {fileID: 8286911994212481657}
   rightHandGrabT: {fileID: 2743412358076913714}
   unGrabableObjects:
   - {fileID: 5325232077161768915}
@@ -11127,7 +11131,7 @@ ConfigurableJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5325232077161768915}
-  m_ConnectedBody: {fileID: 8877686750809779382}
+  m_ConnectedBody: {fileID: 0}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: -0.5, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
@@ -11135,9 +11139,9 @@ ConfigurableJoint:
   m_ConnectedAnchor: {x: 0.5, y: 0, z: 0}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
-  m_XMotion: 0
-  m_YMotion: 0
-  m_ZMotion: 0
+  m_XMotion: 2
+  m_YMotion: 2
+  m_ZMotion: 2
   m_AngularXMotion: 2
   m_AngularYMotion: 2
   m_AngularZMotion: 2
@@ -13301,8 +13305,8 @@ Transform:
   - {fileID: 4719923373487056185}
   - {fileID: 8629363247914155800}
   - {fileID: 7187743021148363966}
-  - {fileID: 4428156746998025347}
   - {fileID: 4079533644419319162}
+  - {fileID: 4428156746998025347}
   m_Father: {fileID: 772432304684285039}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13798,7 +13802,7 @@ ConfigurableJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6701317117227505012}
-  m_ConnectedBody: {fileID: 6257163650675815875}
+  m_ConnectedBody: {fileID: 0}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: -0.5, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
@@ -13806,9 +13810,9 @@ ConfigurableJoint:
   m_ConnectedAnchor: {x: 0.5, y: 0, z: 0}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
-  m_XMotion: 0
-  m_YMotion: 0
-  m_ZMotion: 0
+  m_XMotion: 2
+  m_YMotion: 2
+  m_ZMotion: 2
   m_AngularXMotion: 2
   m_AngularYMotion: 2
   m_AngularZMotion: 2
