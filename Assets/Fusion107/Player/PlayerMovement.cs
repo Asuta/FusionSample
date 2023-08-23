@@ -49,12 +49,12 @@ namespace Fusion107
         public InputActionProperty rightGrab;
         public Rigidbody leftHandRb;
         public ConfigurableJoint leftHandJoint;
-        public NetworkObject leftHandNetworkObject;
+        //public NetworkObject leftHandNetworkObject;
         public Transform leftHandGrabT;
 
         public Rigidbody rightHandRb;
         public ConfigurableJoint rightHandJoint;
-        public NetworkObject rightHandNetworkObject;
+        //public NetworkObject rightHandNetworkObject;
         public Transform rightHandGrabT;
 
         public GameObject[] unGrabableObjects;
@@ -171,23 +171,23 @@ namespace Fusion107
 
                 if (leftGrab.action.triggered)
                 {
-                    GrabSomething(leftHandGrabT, leftHandRb);
+                    GrabSomething(leftHandGrabT, leftHandRb,1);
                 }
                 if (rightGrab.action.triggered)
                 {
-                    GrabSomething(rightHandGrabT, rightHandRb);
+                    GrabSomething(rightHandGrabT, rightHandRb,2);
                 }
 
                 if (leftGrab.action.WasReleasedThisFrame())
                 {
                     Debug.LogError("leftGrab released");
                     //remove the fixedjoint
-                    TakeOutSomething(leftHandRb);
+                    TakeOutSomething(leftHandRb,1);
                 }
                 if (rightGrab.action.WasReleasedThisFrame())
                 {
                     Debug.LogError("rightGrab released");
-                    TakeOutSomething(rightHandRb);
+                    TakeOutSomething(rightHandRb,2);
                 }
             }
 
@@ -242,7 +242,7 @@ namespace Fusion107
         // }
 
 
-        private void GrabSomething(Transform HandGrabT, Rigidbody HandRb)
+        private void GrabSomething(Transform HandGrabT, Rigidbody HandRb,int whichHand)
         {
             Collider[] colliders = Physics.OverlapSphere(HandGrabT.position, grabRadius);
 
@@ -271,7 +271,7 @@ namespace Fusion107
                     fixedJoint.angularYMotion = ConfigurableJointMotion.Locked;
                     fixedJoint.angularZMotion = ConfigurableJointMotion.Locked;
                     //RPC_Grab(collider.GetComponent<NetworkObject>(), HandRb.GetComponent<NetworkObject>(), fixedJoint.anchor, fixedJoint.connectedAnchor);
-                    RPC_Grab2(collider.GetComponent<NetworkObject>(), HandRb.GetComponent<NetworkObject>(), fixedJoint.anchor, fixedJoint.connectedAnchor);
+                    RPC_Grab2(collider.GetComponent<NetworkObject>(), whichHand, fixedJoint.anchor, fixedJoint.connectedAnchor);
                     //结束这个循环
                     break;
                 }
@@ -280,14 +280,14 @@ namespace Fusion107
 
 
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        public void RPC_Grab(NetworkObject grabThing, NetworkObject hand, Vector3 anchorPosition, Vector3 connectedAnchorPosition, RpcInfo info = default)
+        public void RPC_Grab(NetworkObject grabThing,int WhickHand, Vector3 anchorPosition, Vector3 connectedAnchorPosition, RpcInfo info = default)
         {
-            if (hand == leftHandNetworkObject)
+            if (WhickHand == 1)
             {
                 Debug.LogError("leftHandNetworkObject");
             }
 
-            if (hand == rightHandNetworkObject)
+            if (WhickHand == 2)
             {
                 Debug.LogError("rightHandNetworkObject");
             }
@@ -295,12 +295,12 @@ namespace Fusion107
 
 
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        public void RPC_Grab2(NetworkObject grabThing, NetworkObject hand, Vector3 anchorPosition, Vector3 connectedAnchorPosition, RpcInfo info = default)
+        public void RPC_Grab2(NetworkObject grabThing,int WhickHand, Vector3 anchorPosition, Vector3 connectedAnchorPosition, RpcInfo info = default)
         {
             if (HasStateAuthority)
                 return;
 
-            if (hand == leftHandNetworkObject)
+            if (WhickHand == 1)
             {
                 Debug.LogError("leftHandNetworkObject");
                 leftHandJoint.connectedBody = grabThing.GetComponent<Rigidbody>();
@@ -315,7 +315,7 @@ namespace Fusion107
                 leftHandJoint.angularZMotion = ConfigurableJointMotion.Locked;
             }
 
-            if (hand == rightHandNetworkObject)
+            if (WhickHand == 2)
             {
                 Debug.LogError("rightHandNetworkObject");
                 rightHandJoint.connectedBody = grabThing.GetComponent<Rigidbody>();
@@ -334,7 +334,7 @@ namespace Fusion107
 
 
 
-        private void TakeOutSomething(Rigidbody HandRb)
+        private void TakeOutSomething(Rigidbody HandRb,int WhickHand)
         {
             ConfigurableJoint[] fixedJoints = HandRb.GetComponents<ConfigurableJoint>();
             foreach (ConfigurableJoint fixedJoint in fixedJoints)
@@ -342,7 +342,7 @@ namespace Fusion107
                 fixedJoint.connectedBody = null;
                 Destroy(fixedJoint);
             }
-            RPC_TakeOutSometing2(HandRb.GetComponent<NetworkObject>());
+            RPC_TakeOutSometing2(WhickHand);
         }
 
         // [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
@@ -361,12 +361,12 @@ namespace Fusion107
 
 
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        public void RPC_TakeOutSometing2(NetworkObject hand, RpcInfo info = default)
+        public void RPC_TakeOutSometing2(int whichHand, RpcInfo info = default)
         {
             if (HasStateAuthority)
                 return;
 
-            if (hand == leftHandNetworkObject)
+            if (whichHand == 1)
             {
                 Debug.LogError("leftHandNetworkObject");
                 leftHandJoint.connectedBody = null;
@@ -379,7 +379,7 @@ namespace Fusion107
                 leftHandJoint.angularZMotion = ConfigurableJointMotion.Free;
             }
 
-            if (hand == rightHandNetworkObject)
+            if (whichHand == 2)
             {
                 Debug.LogError("rightHandNetworkObject");
                 rightHandJoint.connectedBody = null;
