@@ -7547,7 +7547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6934936193820690288
 Transform:
   m_ObjectHideFlags: 0
@@ -13329,7 +13329,7 @@ MonoBehaviour:
   WordCount: 0
   _interpolationDataSource: 0
   targetTs:
-  - {fileID: 579431815831211911}
+  - {fileID: 6934936193820690288}
   - {fileID: 5532453291621959281}
   - {fileID: 8959113434023872878}
   - {fileID: 1040903543955882032}
