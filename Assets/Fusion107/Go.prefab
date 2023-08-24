@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1085658866317853679}
   - component: {fileID: 2286433217448167137}
   - component: {fileID: 2084700930923210655}
+  - component: {fileID: 6656642041078656551}
   m_Layer: 0
   m_Name: Go
   m_TagString: Untagged
@@ -137,7 +138,23 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 2286433217448167137}
+  - {fileID: 6656642041078656551}
   SimulationBehaviours: []
+--- !u!114 &6656642041078656551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112264093419275499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b584799951f9d6f4f9ede38586cc2f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WordOffset: 0
+  WordCount: 0
+  _interpolationDataSource: 0
 --- !u!1 &8472770327266692080
 GameObject:
   m_ObjectHideFlags: 0
