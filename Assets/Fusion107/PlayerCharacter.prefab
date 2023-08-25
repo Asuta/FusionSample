@@ -8430,9 +8430,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyT: {fileID: 86012127693458085}
-  leftShoulderPosition: {x: 0, y: 0, z: 0}
-  rightShoulderPosition: {x: 0, y: 0, z: 0}
+  leftShoulderPosition: {x: -0.5, y: 0.5, z: 0}
+  leftArmDirection: {fileID: 8959113434023872878}
+  leftForearmDirection: {fileID: 7924074787919493013}
+  leftHandDirection: {fileID: 1905925921228845951}
+  leftArmRigid: {fileID: 7187743021148363966}
+  leftForearmRigid: {fileID: 4079533644419319162}
+  leftHandRigid: {fileID: 4428156746998025347}
+  rightShoulderPosition: {x: 0.5, y: 0.5, z: 0}
+  rightArmDirection: {fileID: 1040903543955882032}
+  rightForearmDirection: {fileID: 4100644971291537906}
+  rightHandDirection: {fileID: 1035146461367822605}
+  rightArmRigid: {fileID: 6466348420513503453}
+  rightForearmRigid: {fileID: 137129792807517632}
+  rightHandRigid: {fileID: 4719923373487056185}
   visualObj: {fileID: 3543703445827246759}
+  length: 1
 --- !u!1 &4148904684587384799
 GameObject:
   m_ObjectHideFlags: 0
@@ -16079,7 +16092,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}

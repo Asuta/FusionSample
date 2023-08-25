@@ -11,6 +11,10 @@ public class CoordinateConverter : MonoBehaviour
 
     }
 
+
+
+
+
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
@@ -18,6 +22,8 @@ public class CoordinateConverter : MonoBehaviour
     {
         Vector3 worldCoordinate = transform.TransformPoint(childTransform.localPosition);
         Debug.Log("世界坐标: " + worldCoordinate);
+
+
 
         moveTarget.position = worldCoordinate;
     }
